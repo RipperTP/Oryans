@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sucrerie o'Ryans | Contact</title>
+  <meta name="description" content="Contact and local inquiry planner for Sucrerie o'Ryans Sugar Shack.">
+  <meta name="theme-color" content="#071009">
+  <link rel="icon" type="image/png" href="assets/images/main.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-contact">
+  <header class="site-header">
+    <div class="shell nav-shell">
+      <a class="brand" href="index.html" aria-label="Sucrerie o'Ryans home">
+        <img class="logo-art" src="assets/images/main.png" alt="Sucrerie o'Ryans logo">
+        <span>
+          <strong>Sucrerie o'Ryans</strong>
+          <small>Embrun, Ontario</small>
+        </span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="index.html">About</a>
+        <a href="forecast.html">Sap Forecast</a>
+        <a href="history.html">History</a>
+        <a href="production.html">Production</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="shell page-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Contact and local pickup</p>
+          <h1 class="display page-display">Build a clean message before you reach out.</h1>
+          <p class="lead">
+            Best contact is still social and local. Use the builder, copy the message, and send it
+            through Facebook or your preferred channel.
+          </p>
+        </div>
+
+        <article class="history-hero-card reveal">
+          <p class="card-kicker">Best public channel</p>
+          <h2>Facebook is the main front door.</h2>
+          <p>
+            Use the public page for updates, local questions, and seasonal interest.
+          </p>
+          <a class="button button-primary" href="https://www.facebook.com/sucrerieoryans/" target="_blank" rel="noreferrer">Open Facebook</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell">
+      <div class="shell">
+        <div class="analysis-layout">
+          <article class="detail-card reveal">
+            <p class="card-kicker">Inquiry builder</p>
+            <h2>Compose a message for local pickup, visits, or season updates.</h2>
+            <form id="contactPlanner" class="form-grid">
+              <label>
+                <span>Your name</span>
+                <input id="visitorName" name="visitorName" type="text" placeholder="Your name">
+              </label>
+
+              <label>
+                <span>Reason</span>
+                <select id="contactReason" name="contactReason">
+                  <option value="local pickup">Local pickup</option>
+                  <option value="visiting during sugar season">Visiting during sugar season</option>
+                  <option value="buying syrup locally">Buying syrup locally</option>
+                  <option value="staying updated on the next boil">Staying updated on the next boil</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Preferred week</span>
+                <input id="contactWeek" name="contactWeek" type="text" placeholder="Example: first week of April">
+              </label>
+
+              <label class="full-span">
+                <span>Extra note</span>
+                <textarea id="contactNotes" name="contactNotes" rows="4" placeholder="Anything they should know?"></textarea>
+              </label>
+            </form>
+
+            <div class="planner-actions">
+              <button id="copyMessage" class="button button-primary" type="button">Copy message</button>
+              <a class="button button-secondary" href="https://www.facebook.com/sucrerieoryans/" target="_blank" rel="noreferrer">Open Facebook page</a>
+            </div>
+          </article>
+
+          <article class="detail-card reveal">
+            <p class="card-kicker">Message preview</p>
+            <textarea id="contactPreview" class="message-preview" rows="12" readonly></textarea>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div>
+        <strong>Sucrerie o'Ryans Sugar Shack</strong>
+        <p>Community-first maple season in Embrun, Ontario.</p>
+      </div>
+      <div>
+        <a href="https://www.facebook.com/sucrerieoryans/" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="history.html">History</a>
+        <a href="forecast.html">Forecast</a>
+      </div>
+      <p class="footer-meta">Use the inquiry builder, then send through your preferred channel. <span data-current-year></span></p>
+    </div>
+  </footer>
+
+  <script defer src="js/data.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/contact.js"></script>
+</body>
+</html>

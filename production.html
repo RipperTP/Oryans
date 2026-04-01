@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sucrerie o'Ryans | Production History</title>
+  <meta name="description" content="Interactive production history for Sucrerie o'Ryans Sugar Shack from the shared season poster.">
+  <meta name="theme-color" content="#071009">
+  <link rel="icon" type="image/png" href="assets/images/main.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-production">
+  <header class="site-header">
+    <div class="shell nav-shell">
+      <a class="brand" href="index.html" aria-label="Sucrerie o'Ryans home">
+        <img class="logo-art" src="assets/images/main.png" alt="Sucrerie o'Ryans logo">
+        <span>
+          <strong>Sucrerie o'Ryans</strong>
+          <small>Embrun, Ontario</small>
+        </span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary">
+        <a href="index.html">About</a>
+        <a href="forecast.html">Sap Forecast</a>
+        <a href="history.html">History</a>
+        <a href="production.html">Production</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="shell page-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Production history</p>
+          <h1 class="display page-display">The poster, rebuilt as a working season dashboard.</h1>
+          <p class="lead">
+            The original production image is now translated into an interactive chart. Compare
+            seasons in one timeline view while keeping total liters, boil duration, and daily
+            output rate in view.
+          </p>
+        </div>
+
+        <article class="history-hero-card reveal">
+          <p class="card-kicker">Important note</p>
+          <h2>Liters and days come from the shared poster.</h2>
+          <p>
+            The season start and end windows below are reconstructed from the poster layout so the
+            history can be explored interactively. The totals remain tied to the values visible in
+            the original image.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell">
+      <div class="shell">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Interactive chart</p>
+          <h2>Click any season to inspect it.</h2>
+        </div>
+
+        <div class="production-layout">
+          <div class="chart-card reveal">
+            <div class="season-axis" aria-hidden="true">
+              <span style="left: 5%;">Feb 15</span>
+              <span style="left: 18.7%;">Mar 1</span>
+              <span style="left: 38.7%;">Mar 15</span>
+              <span style="left: 62.7%;">Apr 1</span>
+              <span style="left: 75.3%;">Apr 15</span>
+              <span style="left: 93%;">Apr 30</span>
+            </div>
+            <div id="seasonChart" class="season-chart"></div>
+          </div>
+
+          <aside id="seasonDetail" class="detail-card reveal">
+            <p class="card-kicker">Season detail</p>
+            <div id="seasonDetailBody" class="detail-summary"></div>
+          </aside>
+        </div>
+
+        <div id="productionStats" class="forecast-summary"></div>
+
+        <div class="section-heading reveal section-heading-tight">
+          <p class="eyebrow">Sap to syrup math</p>
+          <h2>Two useful rules behind the numbers.</h2>
+        </div>
+
+        <div class="card-grid two-up">
+          <article class="feature-card reveal">
+            <p class="card-kicker">Quick rule</p>
+            <h3>About 40 liters of sap for 1 liter of syrup.</h3>
+            <p>
+              That classic 40:1 rule gives a fast back-of-the-envelope estimate for sugar maple sap.
+            </p>
+          </article>
+
+          <article class="feature-card reveal">
+            <p class="card-kicker">More precise rule</p>
+            <h3>The 86 rule adjusts for sugar content.</h3>
+            <p>
+              If sap sugar averages 2.2%, one liter of syrup takes roughly <strong>86 / 2.2</strong>
+              liters of sap, or about 39 liters.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div>
+        <strong>Sucrerie o'Ryans Sugar Shack</strong>
+        <p>Community-first maple season in Embrun, Ontario.</p>
+      </div>
+      <div>
+        <a href="forecast.html">Sap forecast</a>
+        <a href="history.html">History</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <p class="footer-meta">Interactive chart based on the shared production poster. <span data-current-year></span></p>
+    </div>
+  </footer>
+
+  <script defer src="js/data.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/production.js"></script>
+</body>
+</html>
