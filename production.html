@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr-CA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sucrerie o'Ryans | Production History</title>
-  <meta name="description" content="Interactive production history for Sucrerie o'Ryans Sugar Shack from the shared season poster.">
+  <title>Sucrerie o'Ryans | Historique de production</title>
+  <meta name="description" content="Historique interactif de production pour la Sucrerie o'Ryans à partir de l'affiche partagée.">
   <meta name="theme-color" content="#071009">
   <link rel="icon" type="image/png" href="assets/images/main.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,18 +15,18 @@
 <body class="page-production">
   <header class="site-header">
     <div class="shell nav-shell">
-      <a class="brand" href="index.html" aria-label="Sucrerie o'Ryans home">
-        <img class="logo-art" src="assets/images/main.png" alt="Sucrerie o'Ryans logo">
+      <a class="brand" href="index.html" aria-label="Accueil Sucrerie o'Ryans">
+        <img class="logo-art" src="assets/images/main.png" alt="Logo de la Sucrerie o'Ryans">
         <span>
           <strong>Sucrerie o'Ryans</strong>
           <small>Embrun, Ontario</small>
         </span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav id="site-nav" class="site-nav" aria-label="Primary">
-        <a href="index.html">About</a>
-        <a href="forecast.html">Sap Forecast</a>
-        <a href="history.html">History</a>
+      <nav id="site-nav" class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="forecast.html">Prévision</a>
+        <a href="history.html">Histoire</a>
         <a href="production.html">Production</a>
         <a href="contact.html">Contact</a>
       </nav>
@@ -37,22 +37,22 @@
     <section class="page-hero">
       <div class="shell page-hero-grid">
         <div class="reveal">
-          <p class="eyebrow">Production history</p>
-          <h1 class="display page-display">The poster, rebuilt as a working season dashboard.</h1>
+          <p class="eyebrow">Historique de production</p>
+          <h1 class="display page-display">L'affiche, rebâtie en tableau de bord de saison.</h1>
           <p class="lead">
-            The original production image is now translated into an interactive chart. Compare
-            seasons in one timeline view while keeping total liters, boil duration, and daily
-            output rate in view.
+            L'image de production d'origine est maintenant traduite en graphique interactif.
+            Comparez les saisons dans une même ligne du temps tout en gardant en vue les litres
+            totaux, la durée du bouillage et le rythme moyen par jour.
           </p>
         </div>
 
         <article class="history-hero-card reveal">
-          <p class="card-kicker">Important note</p>
-          <h2>Liters and days come from the shared poster.</h2>
+          <p class="card-kicker">À savoir</p>
+          <h2>Les litres et les jours viennent de l'affiche partagée.</h2>
           <p>
-            The season start and end windows below are reconstructed from the poster layout so the
-            history can be explored interactively. The totals remain tied to the values visible in
-            the original image.
+            Les fenêtres de début et de fin de saison ci-dessous sont reconstituées à partir de la
+            mise en page de l'affiche pour permettre une lecture interactive. Les totaux restent
+            rattachés aux valeurs visibles sur l'image d'origine.
           </p>
         </article>
       </div>
@@ -61,25 +61,25 @@
     <section class="section-shell">
       <div class="shell">
         <div class="section-heading reveal">
-          <p class="eyebrow">Interactive chart</p>
-          <h2>Click any season to inspect it.</h2>
+          <p class="eyebrow">Graphique interactif</p>
+          <h2>Cliquez sur une saison pour la regarder de plus près.</h2>
         </div>
 
         <div class="production-layout">
           <div class="chart-card reveal">
             <div class="season-axis" aria-hidden="true">
-              <span style="left: 5%;">Feb 15</span>
-              <span style="left: 18.7%;">Mar 1</span>
-              <span style="left: 38.7%;">Mar 15</span>
-              <span style="left: 62.7%;">Apr 1</span>
-              <span style="left: 75.3%;">Apr 15</span>
-              <span style="left: 93%;">Apr 30</span>
+              <span style="left: 5%;">15 févr.</span>
+              <span style="left: 18.7%;">1 mars</span>
+              <span style="left: 38.7%;">15 mars</span>
+              <span style="left: 62.7%;">1 avr.</span>
+              <span style="left: 75.3%;">15 avr.</span>
+              <span style="left: 93%;">30 avr.</span>
             </div>
             <div id="seasonChart" class="season-chart"></div>
           </div>
 
           <aside id="seasonDetail" class="detail-card reveal">
-            <p class="card-kicker">Season detail</p>
+            <p class="card-kicker">Détail de la saison</p>
             <div id="seasonDetailBody" class="detail-summary"></div>
           </aside>
         </div>
@@ -87,25 +87,26 @@
         <div id="productionStats" class="forecast-summary"></div>
 
         <div class="section-heading reveal section-heading-tight">
-          <p class="eyebrow">Sap to syrup math</p>
-          <h2>Two useful rules behind the numbers.</h2>
+          <p class="eyebrow">Calcul eau-sirop</p>
+          <h2>Deux règles utiles derrière les chiffres.</h2>
         </div>
 
         <div class="card-grid two-up">
           <article class="feature-card reveal">
-            <p class="card-kicker">Quick rule</p>
-            <h3>About 40 liters of sap for 1 liter of syrup.</h3>
+            <p class="card-kicker">Règle rapide</p>
+            <h3>Environ 40 litres d'eau d'érable pour 1 litre de sirop.</h3>
             <p>
-              That classic 40:1 rule gives a fast back-of-the-envelope estimate for sugar maple sap.
+              La règle classique du 40 pour 1 donne une bonne estimation rapide pour l'eau
+              d'érable à sucre.
             </p>
           </article>
 
           <article class="feature-card reveal">
-            <p class="card-kicker">More precise rule</p>
-            <h3>The 86 rule adjusts for sugar content.</h3>
+            <p class="card-kicker">Règle plus précise</p>
+            <h3>La règle du 86 s'ajuste selon le taux de sucre.</h3>
             <p>
-              If sap sugar averages 2.2%, one liter of syrup takes roughly <strong>86 / 2.2</strong>
-              liters of sap, or about 39 liters.
+              Si l'eau d'érable est en moyenne à 2,2 % de sucre, un litre de sirop demande environ
+              <strong>86 / 2.2</strong> litres d'eau, soit autour de 39 litres.
             </p>
           </article>
         </div>
@@ -116,15 +117,15 @@
   <footer class="site-footer">
     <div class="shell footer-grid">
       <div>
-        <strong>Sucrerie o'Ryans Sugar Shack</strong>
-        <p>Community-first maple season in Embrun, Ontario.</p>
+        <strong>Sucrerie o'Ryans</strong>
+        <p>Une saison des sucres bien de chez nous à Embrun, en Ontario.</p>
       </div>
       <div>
-        <a href="forecast.html">Sap forecast</a>
-        <a href="history.html">History</a>
+        <a href="forecast.html">Prévision des coulées</a>
+        <a href="history.html">Histoire</a>
         <a href="contact.html">Contact</a>
       </div>
-      <p class="footer-meta">Interactive chart based on the shared production poster. <span data-current-year></span></p>
+      <p class="footer-meta">Graphique interactif basé sur l'affiche de production partagée. <span data-current-year></span></p>
     </div>
   </footer>
 

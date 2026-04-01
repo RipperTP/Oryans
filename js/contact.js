@@ -19,18 +19,18 @@
     const notes = notesField.value.trim();
 
     const lines = [
-      "Bonjour Sucrerie o'Ryans,",
+      "Bonjour à la Sucrerie o'Ryans,",
       "",
-      name ? `My name is ${name}. I am reaching out about ${reason}.` : `I am reaching out about ${reason}.`,
-      week ? `Preferred timing: ${week}.` : "I am flexible on timing and would love to know what works best for you.",
-      "I know your operation is local and seasonal, so a simple update when convenient would be appreciated."
+      name ? `Je m'appelle ${name}. Je vous écris pour ${reason}.` : `Je vous écris pour ${reason}.`,
+      week ? `Semaine visée : ${week}.` : "Je suis flexible pour le moment et j'aimerais savoir ce qui vous conviendrait le mieux.",
+      "Je sais que c'est une production locale et saisonnière, alors une petite réponse quand vous aurez le temps serait bien appréciée."
     ];
 
     if (notes) {
-      lines.push(`Extra note: ${notes}`);
+      lines.push(`Petite note en plus : ${notes}`);
     }
 
-    lines.push("", "Thank you.");
+    lines.push("", "Merci beaucoup.");
     preview.value = lines.join("\n");
   }
 
@@ -49,15 +49,15 @@
           preview.select();
           document.execCommand("copy");
         }
-        copyButton.textContent = "Copied";
+        copyButton.textContent = "Copié";
         window.setTimeout(() => {
-          copyButton.textContent = "Copy message";
+          copyButton.textContent = "Copier le message";
         }, 1600);
       } catch (error) {
         console.error(error);
-        copyButton.textContent = "Copy failed";
+        copyButton.textContent = "Échec";
         window.setTimeout(() => {
-          copyButton.textContent = "Copy message";
+          copyButton.textContent = "Copier le message";
         }, 1600);
       }
     });

@@ -46,7 +46,8 @@
 
   function formatRange(start, end) {
     const options = { month: "short", day: "numeric" };
-    return `${new Intl.DateTimeFormat("en-CA", options).format(new Date(`${start}T12:00:00`))} to ${new Intl.DateTimeFormat("en-CA", options).format(new Date(`${end}T12:00:00`))}`;
+    const formatter = new Intl.DateTimeFormat("fr-CA", options);
+    return `${formatter.format(new Date(`${start}T12:00:00`))} au ${formatter.format(new Date(`${end}T12:00:00`))}`;
   }
 
   function renderDetail(season) {
@@ -66,18 +67,18 @@
       <div class="detail-summary-grid">
         <div class="detail-metric">
           <strong>${season.liters} L</strong>
-          <span>Total syrup</span>
+          <span>Total de sirop</span>
         </div>
         <div class="detail-metric">
-          <strong>${season.days} days</strong>
-          <span>Boiling days</span>
+          <strong>${season.days} jours</strong>
+          <span>Jours de bouillage</span>
         </div>
         <div class="detail-metric">
-          <strong>${season.rate.toFixed(1)} L/day</strong>
-          <span>Average output</span>
+          <strong>${season.rate.toFixed(1)} L/jour</strong>
+          <span>Rythme moyen</span>
         </div>
       </div>
-      <p>Approximate season window: ${formatRange(season.start, season.end)}</p>
+      <p>Fenêtre approximative : ${formatRange(season.start, season.end)}</p>
     `;
   }
 
@@ -92,24 +93,24 @@
 
     stats.innerHTML = `
       <article class="summary-card reveal is-visible">
-        <p class="card-kicker">Best volume</p>
+        <p class="card-kicker">Meilleur volume</p>
         <h2>${bestVolume.liters} L</h2>
-        <p>${bestVolume.year} holds the highest visible total on the poster.</p>
+        <p>${bestVolume.year} affiche le plus gros total visible sur l'affiche.</p>
       </article>
       <article class="summary-card reveal is-visible">
-        <p class="card-kicker">Longest season</p>
-        <h2>${longestSeason.days} days</h2>
-        <p>${longestSeason.year} stretches the season longest from late February into April.</p>
+        <p class="card-kicker">Saison la plus longue</p>
+        <h2>${longestSeason.days} jours</h2>
+        <p>${longestSeason.year} étire la saison le plus longtemps, de la fin février jusqu'en avril.</p>
       </article>
       <article class="summary-card reveal is-visible">
-        <p class="card-kicker">Fastest pace</p>
-        <h2>${bestRate.rate.toFixed(1)} L/day</h2>
-        <p>${bestRate.year} delivered the highest visible daily output rate.</p>
+        <p class="card-kicker">Meilleur rythme</p>
+        <h2>${bestRate.rate.toFixed(1)} L/jour</h2>
+        <p>${bestRate.year} a donné le meilleur rendement quotidien visible.</p>
       </article>
       <article class="summary-card reveal is-visible">
-        <p class="card-kicker">Average season</p>
+        <p class="card-kicker">Saison moyenne</p>
         <h2>${avgLiters} L</h2>
-        <p>Across the visible seasons, the average run lasts about ${avgDays} days at ${avgRate.toFixed(1)} L/day.</p>
+        <p>Sur les saisons visibles, la moyenne tourne autour de ${avgDays} jours à ${avgRate.toFixed(1)} L/jour.</p>
       </article>
     `;
   }
@@ -121,7 +122,7 @@
           <button class="season-row" type="button" data-year="${season.year}">
             <div class="season-year">${season.year}</div>
             <div class="season-track">
-              <div class="season-empty">Production data was not recorded.</div>
+              <div class="season-empty">Aucune donnée de production notée.</div>
             </div>
           </button>
         `;
@@ -139,7 +140,7 @@
           <div class="season-track">
             <div class="season-span" style="--start:${left.toFixed(2)}; --width:${width.toFixed(2)}; --strength:${strength.toFixed(3)};">
               <strong>${season.liters} L</strong>
-              <small>${season.days} days</small>
+              <small>${season.days} jours</small>
             </div>
           </div>
         </button>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr-CA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sucrerie o'Ryans | Contact</title>
-  <meta name="description" content="Contact and local inquiry planner for Sucrerie o'Ryans Sugar Shack.">
+  <meta name="description" content="Contact et générateur de message local pour la Sucrerie o'Ryans.">
   <meta name="theme-color" content="#071009">
   <link rel="icon" type="image/png" href="assets/images/main.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,18 +15,18 @@
 <body class="page-contact">
   <header class="site-header">
     <div class="shell nav-shell">
-      <a class="brand" href="index.html" aria-label="Sucrerie o'Ryans home">
-        <img class="logo-art" src="assets/images/main.png" alt="Sucrerie o'Ryans logo">
+      <a class="brand" href="index.html" aria-label="Accueil Sucrerie o'Ryans">
+        <img class="logo-art" src="assets/images/main.png" alt="Logo de la Sucrerie o'Ryans">
         <span>
           <strong>Sucrerie o'Ryans</strong>
           <small>Embrun, Ontario</small>
         </span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav id="site-nav" class="site-nav" aria-label="Primary">
-        <a href="index.html">About</a>
-        <a href="forecast.html">Sap Forecast</a>
-        <a href="history.html">History</a>
+      <nav id="site-nav" class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="forecast.html">Prévision</a>
+        <a href="history.html">Histoire</a>
         <a href="production.html">Production</a>
         <a href="contact.html">Contact</a>
       </nav>
@@ -37,21 +37,22 @@
     <section class="page-hero">
       <div class="shell page-hero-grid">
         <div class="reveal">
-          <p class="eyebrow">Contact and local pickup</p>
-          <h1 class="display page-display">Build a clean message before you reach out.</h1>
+          <p class="eyebrow">Contact et cueillette locale</p>
+          <h1 class="display page-display">Préparez un message clair avant d'écrire.</h1>
           <p class="lead">
-            Best contact is still social and local. Use the builder, copy the message, and send it
-            through Facebook or your preferred channel.
+            Le meilleur contact reste encore local et social. Servez-vous du générateur, copiez le
+            message et envoyez-le par Facebook ou par le canal que vous préférez.
           </p>
         </div>
 
         <article class="history-hero-card reveal">
-          <p class="card-kicker">Best public channel</p>
-          <h2>Facebook is the main front door.</h2>
+          <p class="card-kicker">Meilleur canal public</p>
+          <h2>Facebook reste la principale porte d'entrée.</h2>
           <p>
-            Use the public page for updates, local questions, and seasonal interest.
+            Utilisez la page publique pour les nouvelles, les questions locales et l'intérêt
+            pendant la saison.
           </p>
-          <a class="button button-primary" href="https://www.facebook.com/sucrerieoryans/" target="_blank" rel="noreferrer">Open Facebook</a>
+          <a class="button button-primary" href="https://www.facebook.com/sucrerieoryans/" target="_blank" rel="noreferrer">Ouvrir Facebook</a>
         </article>
       </div>
     </section>
@@ -60,43 +61,43 @@
       <div class="shell">
         <div class="analysis-layout">
           <article class="detail-card reveal">
-            <p class="card-kicker">Inquiry builder</p>
-            <h2>Compose a message for local pickup, visits, or season updates.</h2>
+            <p class="card-kicker">Générateur de message</p>
+            <h2>Montez un message pour une cueillette, une visite ou des nouvelles de la saison.</h2>
             <form id="contactPlanner" class="form-grid">
               <label>
-                <span>Your name</span>
-                <input id="visitorName" name="visitorName" type="text" placeholder="Your name">
+                <span>Votre nom</span>
+                <input id="visitorName" name="visitorName" type="text" placeholder="Votre nom">
               </label>
 
               <label>
-                <span>Reason</span>
+                <span>Raison</span>
                 <select id="contactReason" name="contactReason">
-                  <option value="local pickup">Local pickup</option>
-                  <option value="visiting during sugar season">Visiting during sugar season</option>
-                  <option value="buying syrup locally">Buying syrup locally</option>
-                  <option value="staying updated on the next boil">Staying updated on the next boil</option>
+                  <option value="venir chercher du sirop sur place">Venir chercher du sirop sur place</option>
+                  <option value="passer pendant le temps des sucres">Passer pendant le temps des sucres</option>
+                  <option value="acheter du sirop localement">Acheter du sirop localement</option>
+                  <option value="rester au courant du prochain bouillage">Rester au courant du prochain bouillage</option>
                 </select>
               </label>
 
               <label>
-                <span>Preferred week</span>
-                <input id="contactWeek" name="contactWeek" type="text" placeholder="Example: first week of April">
+                <span>Semaine visée</span>
+                <input id="contactWeek" name="contactWeek" type="text" placeholder="Exemple : première semaine d'avril">
               </label>
 
               <label class="full-span">
-                <span>Extra note</span>
-                <textarea id="contactNotes" name="contactNotes" rows="4" placeholder="Anything they should know?"></textarea>
+                <span>Note additionnelle</span>
+                <textarea id="contactNotes" name="contactNotes" rows="4" placeholder="Quelque chose d'utile à préciser?"></textarea>
               </label>
             </form>
 
             <div class="planner-actions">
-              <button id="copyMessage" class="button button-primary" type="button">Copy message</button>
-              <a class="button button-secondary" href="https://www.facebook.com/sucrerieoryans/" target="_blank" rel="noreferrer">Open Facebook page</a>
+              <button id="copyMessage" class="button button-primary" type="button">Copier le message</button>
+              <a class="button button-secondary" href="https://www.facebook.com/sucrerieoryans/" target="_blank" rel="noreferrer">Ouvrir la page Facebook</a>
             </div>
           </article>
 
           <article class="detail-card reveal">
-            <p class="card-kicker">Message preview</p>
+            <p class="card-kicker">Aperçu du message</p>
             <textarea id="contactPreview" class="message-preview" rows="12" readonly></textarea>
           </article>
         </div>
@@ -107,15 +108,15 @@
   <footer class="site-footer">
     <div class="shell footer-grid">
       <div>
-        <strong>Sucrerie o'Ryans Sugar Shack</strong>
-        <p>Community-first maple season in Embrun, Ontario.</p>
+        <strong>Sucrerie o'Ryans</strong>
+        <p>Une saison des sucres bien de chez nous à Embrun, en Ontario.</p>
       </div>
       <div>
         <a href="https://www.facebook.com/sucrerieoryans/" target="_blank" rel="noreferrer">Facebook</a>
-        <a href="history.html">History</a>
-        <a href="forecast.html">Forecast</a>
+        <a href="history.html">Histoire</a>
+        <a href="forecast.html">Prévision</a>
       </div>
-      <p class="footer-meta">Use the inquiry builder, then send through your preferred channel. <span data-current-year></span></p>
+      <p class="footer-meta">Utilisez le générateur puis envoyez le message dans le canal que vous préférez. <span data-current-year></span></p>
     </div>
   </footer>
 

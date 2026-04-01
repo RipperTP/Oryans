@@ -23,27 +23,27 @@
   let selectedDay = null;
 
   const weatherLabels = {
-    0: "Clear",
-    1: "Mainly clear",
-    2: "Partly cloudy",
-    3: "Cloudy",
-    45: "Fog",
-    48: "Rime fog",
-    51: "Light drizzle",
-    53: "Drizzle",
-    55: "Dense drizzle",
-    61: "Rain",
-    63: "Rain",
-    65: "Heavy rain",
-    71: "Snow",
-    73: "Snow",
-    75: "Heavy snow",
-    80: "Rain showers",
-    81: "Rain showers",
-    82: "Heavy showers",
-    85: "Snow showers",
-    86: "Heavy snow showers",
-    95: "Thunderstorm"
+    0: "Dégagé",
+    1: "Surtout dégagé",
+    2: "Partiellement nuageux",
+    3: "Nuageux",
+    45: "Brouillard",
+    48: "Brouillard givrant",
+    51: "Bruine légère",
+    53: "Bruine",
+    55: "Bruine forte",
+    61: "Pluie",
+    63: "Pluie",
+    65: "Forte pluie",
+    71: "Neige",
+    73: "Neige",
+    75: "Forte neige",
+    80: "Averses",
+    81: "Averses",
+    82: "Fortes averses",
+    85: "Averses de neige",
+    86: "Fortes averses de neige",
+    95: "Orage"
   };
 
   function clamp(value, min, max) {
@@ -53,8 +53,8 @@
   function formatDateLabel(dateString) {
     const date = new Date(`${dateString}T12:00:00`);
     return {
-      day: new Intl.DateTimeFormat("en-CA", { weekday: "short" }).format(date),
-      short: new Intl.DateTimeFormat("en-CA", { month: "short", day: "numeric" }).format(date)
+      day: new Intl.DateTimeFormat("fr-CA", { weekday: "short" }).format(date),
+      short: new Intl.DateTimeFormat("fr-CA", { month: "short", day: "numeric" }).format(date)
     };
   }
 
@@ -68,31 +68,31 @@
     const day = date.getDate();
 
     if (month === 3) {
-      return { score: 16, note: "Prime sugar-season timing." };
+      return { score: 16, note: "En plein cœur du temps des sucres." };
     }
 
     if (month === 2 && day >= 20) {
-      return { score: 10, note: "Early but seasonally possible." };
+      return { score: 10, note: "Un peu tôt, mais ça reste plausible pour la saison." };
     }
 
     if (month === 4 && day <= 15) {
-      return { score: 8, note: "Late-season window still in play." };
+      return { score: 8, note: "La fin de saison est encore dans le coup." };
     }
 
-    return { score: -12, note: "Outside the most reliable sap window." };
+    return { score: -12, note: "En dehors de la fenêtre la plus fiable pour la coulée." };
   }
 
   function getCategory(score) {
     if (score >= 78) {
-      return { key: "excellent", label: "Excellent run" };
+      return { key: "excellent", label: "Excellente coulée", summary: "très favorable à la coulée" };
     }
     if (score >= 60) {
-      return { key: "promising", label: "Promising" };
+      return { key: "promising", label: "Belle fenêtre", summary: "plutôt favorable à la coulée" };
     }
     if (score >= 40) {
-      return { key: "fair", label: "Fair" };
+      return { key: "fair", label: "Potentiel moyen", summary: "correct pour une petite coulée" };
     }
-    return { key: "quiet", label: "Quiet" };
+    return { key: "quiet", label: "Plutôt tranquille", summary: "assez tranquille pour la coulée" };
   }
 
   function scoreDay(day, index, allDays) {
@@ -107,42 +107,42 @@
 
     if (day.min <= -1 && day.min >= -8) {
       score += 24;
-      notes.push("Night drops cleanly below freezing.");
+      notes.push("La nuit descend franchement sous zéro.");
     } else if (day.min <= 1) {
       score += 12;
-      notes.push("Near-freezing night may still help pressure change.");
+      notes.push("Une nuit près de zéro peut quand même aider le changement de pression.");
     } else {
       score -= 18;
-      notes.push("Warm night weakens the freeze/thaw cycle.");
+      notes.push("Une nuit trop douce casse le cycle gel-dégel.");
     }
 
     if (day.max >= 3 && day.max <= 8) {
       score += 26;
-      notes.push("Daytime high sits in the classic sap-running band.");
+      notes.push("La chaleur du jour tombe dans la zone idéale pour une bonne coulée.");
     } else if (day.max > 0 && day.max <= 12) {
       score += 16;
-      notes.push("Enough daytime thaw for at least some movement.");
+      notes.push("Le dégel du jour devrait quand même faire bouger l'eau d'érable.");
     } else if (day.max > 12 && day.max <= 18) {
       score += 4;
-      notes.push("Warm afternoon may shorten the strongest run window.");
+      notes.push("Un après-midi trop doux peut raccourcir la meilleure fenêtre de coulée.");
     } else {
       score -= 12;
-      notes.push("Too cold during the day for a healthy thaw.");
+      notes.push("Il fait trop froid dans le jour pour un vrai dégel.");
     }
 
     if (swing >= 5 && swing <= 13) {
       score += 12;
-      notes.push("Good day-to-night temperature swing.");
+      notes.push("Bon écart de température entre la nuit et le jour.");
     } else if (swing >= 3) {
       score += 6;
     } else {
       score -= 6;
-      notes.push("Small temperature swing limits pressure change.");
+      notes.push("Le petit écart de température limite le changement de pression.");
     }
 
     if (sunshineHours >= 5) {
       score += 8;
-      notes.push("Sunshine should help warm trunks and lines.");
+      notes.push("Le soleil devrait aider à réchauffer les troncs et la tubulure.");
     } else if (sunshineHours >= 2) {
       score += 4;
     } else {
@@ -151,15 +151,15 @@
 
     if (day.precip >= 0.5 && day.precip <= 8) {
       score += 4;
-      notes.push("Recent moisture may help keep trees recharged.");
+      notes.push("L'humidité récente peut aider les arbres à rester bien chargés.");
     } else if (day.precip > 15) {
       score -= 3;
-      notes.push("Heavy precipitation can make collection messy.");
+      notes.push("De grosses précipitations peuvent rendre la collecte plus compliquée.");
     }
 
     if (day.wind > 35) {
       score -= 7;
-      notes.push("Strong wind may cool trees and complicate collection.");
+      notes.push("Le gros vent peut refroidir les arbres et compliquer la collecte.");
     } else if (day.wind < 20) {
       score += 2;
     }
@@ -167,7 +167,7 @@
     const neighborDays = [allDays[index - 1], allDays[index + 1]].filter(Boolean);
     if (neighborDays.some(isClassicCycle)) {
       score += 5;
-      notes.push("A neighboring day also supports a freeze/thaw rhythm.");
+      notes.push("La journée voisine soutient elle aussi un bon rythme de gel-dégel.");
     }
 
     const finalScore = clamp(Math.round(score), 0, 100);
@@ -191,15 +191,18 @@
     const bestDay = [...days].sort((a, b) => b.score - a.score)[0];
     const promisingDays = days.filter((day) => day.score >= 60).length;
     const weekAverage = Math.round(days.reduce((sum, day) => sum + day.score, 0) / days.length);
+    const tomorrowLabel = formatDateLabel(tomorrow.date);
+    const bestLabel = formatDateLabel(bestDay.date);
+    const strongDayLabel = promisingDays === 1 ? "bonne journée" : "bonnes journées";
 
     tomorrowHeadline.textContent = `${tomorrow.score}/100`;
-    tomorrowDetail.textContent = `${formatDateLabel(tomorrow.date).day} looks ${tomorrow.category.label.toLowerCase()} for sap flow.`;
+    tomorrowDetail.textContent = `${tomorrowLabel.day} ${tomorrowLabel.short} s'annonce ${tomorrow.category.summary}.`;
 
-    bestHeadline.textContent = `${formatDateLabel(bestDay.date).short}`;
-    bestDetail.textContent = `${bestDay.category.label} with a score of ${bestDay.score}/100.`;
+    bestHeadline.textContent = `${bestLabel.short}`;
+    bestDetail.textContent = `${bestDay.category.label} avec un score de ${bestDay.score}/100.`;
 
-    weekHeadline.textContent = `${promisingDays} strong day${promisingDays === 1 ? "" : "s"}`;
-    weekDetail.textContent = `Weekly average: ${weekAverage}/100 over the next seven days.`;
+    weekHeadline.textContent = `${promisingDays} ${strongDayLabel}`;
+    weekDetail.textContent = `Moyenne des sept prochains jours : ${weekAverage}/100.`;
   }
 
   function renderSelectedDay(day) {
@@ -208,19 +211,19 @@
 
     selectedSummary.innerHTML = `
       <h3>${day.category.label}</h3>
-      <p>${label.day}, ${label.short} in Embrun scored <strong>${day.score}/100</strong>.</p>
+      <p>À Embrun, ${label.day} ${label.short} obtient <strong>${day.score}/100</strong>.</p>
       <div class="detail-summary-grid">
         <div class="detail-metric">
           <strong>${day.max.toFixed(1)} C</strong>
-          <span>Daytime high</span>
+          <span>Maximum</span>
         </div>
         <div class="detail-metric">
           <strong>${day.min.toFixed(1)} C</strong>
-          <span>Night low</span>
+          <span>Minimum de nuit</span>
         </div>
         <div class="detail-metric">
           <strong>${day.sunshineHours.toFixed(1)} h</strong>
-          <span>Sunshine</span>
+          <span>Ensoleillement</span>
         </div>
       </div>
     `;
@@ -246,11 +249,11 @@
     const syrupLiters = expectedSap / sapPerLiterOfSyrup;
 
     plannerOutput.innerHTML = `
-      <strong>${selectedDay.score}/100 day estimate</strong><br>
-      At <strong>${taps}</strong> taps and <strong>${liters.toFixed(1)} L</strong> per tap on a strong day,
-      this forecast suggests about <strong>${expectedSap.toFixed(1)} liters of sap</strong>.<br>
-      At <strong>${sugar.toFixed(1)}%</strong> sap sugar, that converts to roughly
-      <strong>${syrupLiters.toFixed(1)} liters of finished syrup</strong> using the 86 rule.
+      <strong>Estimation pour une journée à ${selectedDay.score}/100</strong><br>
+      Avec <strong>${taps}</strong> entailles et <strong>${liters.toFixed(1)} L</strong> par entaille lors d'une bonne journée,
+      la prévision donne environ <strong>${expectedSap.toFixed(1)} litres d'eau d'érable</strong>.<br>
+      À <strong>${sugar.toFixed(1)} %</strong> de sucre, ça représente à peu près
+      <strong>${syrupLiters.toFixed(1)} litres de sirop fini</strong> selon la règle du 86.
     `;
   }
 
@@ -269,7 +272,7 @@
           <div class="day-card-bottom">
             <div>
               <strong>${day.max.toFixed(1)} / ${day.min.toFixed(1)} C</strong>
-              <span class="weather-label">${weatherLabels[day.weatherCode] || "Forecast"}</span>
+              <span class="weather-label">${weatherLabels[day.weatherCode] || "Prévision"}</span>
             </div>
             <div class="day-meta">${day.precip.toFixed(1)} mm</div>
           </div>
@@ -288,7 +291,7 @@
   }
 
   async function loadForecast() {
-    setStatus("Loading forecast data for Embrun...");
+    setStatus("Chargement des données météo pour Embrun...");
 
     const { latitude, longitude } = window.oryansData.location;
     const url =
@@ -327,7 +330,7 @@
       app.querySelectorAll(".reveal").forEach((node) => node.classList.add("is-visible"));
     } catch (error) {
       console.error(error);
-      setStatus("Forecast unavailable right now. The weather API did not respond.");
+      setStatus("Prévision indisponible pour le moment. L'API météo n'a pas répondu.");
       app.classList.add("is-hidden");
     }
   }

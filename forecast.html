@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr-CA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sucrerie o'Ryans | Sap Forecast</title>
-  <meta name="description" content="Interactive sap forecast calculator for Sucrerie o'Ryans in Embrun, Ontario.">
+  <title>Sucrerie o'Ryans | Prévision des coulées</title>
+  <meta name="description" content="Calculateur interactif de prévision des coulées pour la Sucrerie o'Ryans à Embrun, en Ontario.">
   <meta name="theme-color" content="#071009">
   <link rel="icon" type="image/png" href="assets/images/main.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,18 +15,18 @@
 <body class="page-forecast">
   <header class="site-header">
     <div class="shell nav-shell">
-      <a class="brand" href="index.html" aria-label="Sucrerie o'Ryans home">
-        <img class="logo-art" src="assets/images/main.png" alt="Sucrerie o'Ryans logo">
+      <a class="brand" href="index.html" aria-label="Accueil Sucrerie o'Ryans">
+        <img class="logo-art" src="assets/images/main.png" alt="Logo de la Sucrerie o'Ryans">
         <span>
           <strong>Sucrerie o'Ryans</strong>
           <small>Embrun, Ontario</small>
         </span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav id="site-nav" class="site-nav" aria-label="Primary">
-        <a href="index.html">About</a>
-        <a href="forecast.html">Sap Forecast</a>
-        <a href="history.html">History</a>
+      <nav id="site-nav" class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="forecast.html">Prévision</a>
+        <a href="history.html">Histoire</a>
         <a href="production.html">Production</a>
         <a href="contact.html">Contact</a>
       </nav>
@@ -37,23 +37,25 @@
     <section class="page-hero">
       <div class="shell page-hero-grid">
         <div class="reveal">
-          <p class="eyebrow">Sap forecast calculator</p>
-          <h1 class="display page-display">Will tomorrow run hard, stay quiet, or sit somewhere in between?</h1>
+          <p class="eyebrow">Prévision des coulées</p>
+          <h1 class="display page-display">Demain, est-ce que ça va couler fort, rester tranquille ou tomber entre les deux?</h1>
           <p class="lead">
-            This tool reads the next seven days of forecast data for Embrun and scores each day for
-            maple sap potential. It uses freeze/thaw timing, daytime warmth, sunshine, moisture,
-            wind, and seasonal timing to build a practical field-style outlook.
+            Cet outil lit les sept prochains jours de météo pour Embrun et donne une note à chaque
+            journée selon son potentiel de coulée. Il tient compte du gel-dégel, de la douceur du
+            jour, du soleil, de l'humidité, du vent et du moment dans la saison pour sortir une
+            lecture pratique, façon terrain.
           </p>
         </div>
 
         <div class="forecast-intro-card reveal">
-          <p class="card-kicker">What the score means</p>
-          <h2>It is a forecast index, not a promise.</h2>
+          <p class="card-kicker">Ce que la note veut dire</p>
+          <h2>C'est un indice de prévision, pas une garantie.</h2>
           <p>
-            Trees, taps, slope, tubing, and woods management still matter. The score is meant to
-            answer the question that comes up every spring: <em>is it worth gearing up tomorrow?</em>
+            Les arbres, les entailles, la pente, la tubulure et la gestion du boisé comptent
+            encore. La note sert surtout à répondre à la question qui revient chaque printemps :
+            <em>est-ce que ça vaut la peine de se préparer pour demain?</em>
           </p>
-          <button id="refreshForecast" class="button button-primary" type="button">Refresh forecast</button>
+          <button id="refreshForecast" class="button button-primary" type="button">Rafraîchir la prévision</button>
         </div>
       </div>
     </section>
@@ -61,25 +63,25 @@
     <section class="section-shell">
       <div class="shell">
         <noscript>
-          <p class="fallback-note">JavaScript is required to load the live Embrun forecast.</p>
+          <p class="fallback-note">JavaScript est nécessaire pour charger la prévision en direct d'Embrun.</p>
         </noscript>
 
-        <div id="forecastStatus" class="loading-panel">Loading forecast data for Embrun...</div>
+        <div id="forecastStatus" class="loading-panel">Chargement des données météo pour Embrun...</div>
 
         <div id="forecastApp" class="forecast-app is-hidden">
           <div class="forecast-summary">
             <article class="summary-card reveal">
-              <p class="card-kicker">Tomorrow</p>
+              <p class="card-kicker">Demain</p>
               <h2 id="tomorrowHeadline">-</h2>
               <p id="tomorrowDetail">-</p>
             </article>
             <article class="summary-card reveal">
-              <p class="card-kicker">Best next run</p>
+              <p class="card-kicker">Meilleure journée</p>
               <h2 id="bestHeadline">-</h2>
               <p id="bestDetail">-</p>
             </article>
             <article class="summary-card reveal">
-              <p class="card-kicker">Week read</p>
+              <p class="card-kicker">Tendance semaine</p>
               <h2 id="weekHeadline">-</h2>
               <p id="weekDetail">-</p>
             </article>
@@ -89,25 +91,25 @@
 
           <div class="analysis-layout">
             <article class="detail-card reveal">
-              <p class="card-kicker">Selected day</p>
+              <p class="card-kicker">Journée choisie</p>
               <div id="selectedDaySummary" class="detail-summary"></div>
               <ul id="selectedDayNotes" class="bullet-list compact"></ul>
             </article>
 
             <article class="detail-card reveal">
-              <p class="card-kicker">Tap planner</p>
-              <h2>Translate the forecast into rough sap and syrup volume.</h2>
+              <p class="card-kicker">Planificateur d'entailles</p>
+              <h2>Traduisez la prévision en volume approximatif d'eau d'érable et de sirop.</h2>
               <form id="tapPlanner" class="form-grid">
                 <label>
-                  <span>Tap count</span>
+                  <span>Nombre d'entailles</span>
                   <input id="tapCount" name="tapCount" type="number" min="1" value="125">
                 </label>
                 <label>
-                  <span>Liters per tap on a strong day</span>
+                  <span>Litres par entaille lors d'une bonne journée</span>
                   <input id="litersPerTap" name="litersPerTap" type="number" min="0.2" step="0.1" value="2.2">
                 </label>
                 <label>
-                  <span>Average sap sugar content (%)</span>
+                  <span>Teneur moyenne en sucre de l'eau d'érable (%)</span>
                   <input id="sapSugar" name="sapSugar" type="number" min="1" max="5" step="0.1" value="2.2">
                 </label>
               </form>
@@ -116,13 +118,13 @@
           </div>
 
           <div class="source-panel reveal">
-            <p class="card-kicker">Forecast logic</p>
-            <h2>Research assumptions behind the calculator.</h2>
+            <p class="card-kicker">Logique de prévision</p>
+            <h2>Les hypothèses de base derrière le calculateur.</h2>
             <ul class="bullet-list">
-              <li>Best sap runs usually come with below-freezing nights and daytime highs in roughly the high 30s to mid-40s F.</li>
-              <li>Repeated freeze/thaw cycles matter more than a single warm day.</li>
-              <li>Sunshine can help warm trees, while very strong wind and warm nights can reduce the run.</li>
-              <li>Moisture and seasonal timing help, but field conditions still win over any browser model.</li>
+              <li>Les meilleures coulées arrivent souvent avec des nuits sous zéro et des maxima de jour juste assez doux pour dégeler.</li>
+              <li>Les cycles répétés de gel et dégel comptent davantage qu'une seule journée chaude.</li>
+              <li>Le soleil peut aider à réchauffer les arbres, tandis qu'un gros vent ou des nuits trop douces peuvent casser la coulée.</li>
+              <li>L'humidité et le moment de la saison aident, mais ce qui se passe dans le bois gagne toujours sur n'importe quel modèle.</li>
             </ul>
           </div>
         </div>
@@ -133,15 +135,15 @@
   <footer class="site-footer">
     <div class="shell footer-grid">
       <div>
-        <strong>Sucrerie o'Ryans Sugar Shack</strong>
-        <p>Community-first maple season in Embrun, Ontario.</p>
+        <strong>Sucrerie o'Ryans</strong>
+        <p>Une saison des sucres bien de chez nous à Embrun, en Ontario.</p>
       </div>
       <div>
         <a href="https://www.facebook.com/sucrerieoryans/" target="_blank" rel="noreferrer">Facebook</a>
-        <a href="production.html">Production history</a>
-        <a href="history.html">Story and media</a>
+        <a href="production.html">Historique de production</a>
+        <a href="history.html">Histoire et médias</a>
       </div>
-      <p class="footer-meta">Live weather data refreshes from Open-Meteo. <span data-current-year></span></p>
+      <p class="footer-meta">Les données météo en direct sont mises à jour à partir d'Open-Meteo. <span data-current-year></span></p>
     </div>
   </footer>
 
