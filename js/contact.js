@@ -1,65 +1,40 @@
 (function () {
   const form = document.getElementById("contactPlanner");
-  const preview = document.getElementById("contactPreview");
-  const copyButton = document.getElementById("copyMessage");
 
-  if (!form || !preview) {
+  if (!form) {
     return;
   }
 
   const nameField = document.getElementById("visitorName");
-  const reasonField = document.getElementById("contactReason");
-  const weekField = document.getElementById("contactWeek");
-  const notesField = document.getElementById("contactNotes");
+  const emailField = document.getElementById("visitorEmail");
+  const subjectField = document.getElementById("contactSubject");
+  const messageField = document.getElementById("contactMessage");
+  const recipient = "sugarshack@oryans.ca";
 
-  function buildMessage() {
+  function buildBody() {
     const name = nameField.value.trim();
-    const reason = reasonField.value;
-    const week = weekField.value.trim();
-    const notes = notesField.value.trim();
+    const email = emailField.value.trim();
+    const message = messageField.value.trim();
 
     const lines = [
       "Bonjour à la Sucrerie o'Ryans,",
       "",
-      name ? `Je m'appelle ${name}. Je vous écris pour ${reason}.` : `Je vous écris pour ${reason}.`,
-      week ? `Semaine visée : ${week}.` : "Je suis flexible pour le moment et j'aimerais savoir ce qui vous conviendrait le mieux.",
-      "Je sais que c'est une production locale et saisonnière, alors une petite réponse quand vous aurez le temps serait bien appréciée."
+      message,
+      "",
+      `Nom: ${name}`,
+      `Courriel: ${email}`
     ];
 
-    if (notes) {
-      lines.push(`Petite note en plus : ${notes}`);
-    }
-
-    lines.push("", "Merci beaucoup.");
-    preview.value = lines.join("\n");
+    return lines.join("\n");
   }
 
-  form.addEventListener("input", buildMessage);
-  buildMessage();
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  if (copyButton) {
-    copyButton.addEventListener("click", async () => {
-      buildMessage();
+    const subject = subjectField.value.trim() || "Message pour la Sucrerie o'Ryans";
+    const body = buildBody();
+    const mailtoLink = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-      try {
-        if (navigator.clipboard && window.isSecureContext) {
-          await navigator.clipboard.writeText(preview.value);
-        } else {
-          preview.focus();
-          preview.select();
-          document.execCommand("copy");
-        }
-        copyButton.textContent = "Copié";
-        window.setTimeout(() => {
-          copyButton.textContent = "Copier le message";
-        }, 1600);
-      } catch (error) {
-        console.error(error);
-        copyButton.textContent = "Échec";
-        window.setTimeout(() => {
-          copyButton.textContent = "Copier le message";
-        }, 1600);
-      }
-    });
-  }
+    window.location.href = mailtoLink;
+  });
 })();

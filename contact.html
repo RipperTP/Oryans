@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sucrerie o'Ryans | Contact</title>
-  <meta name="description" content="Contact et générateur de message local pour la Sucrerie o'Ryans.">
+  <meta name="description" content="Contact et point de vente local pour la Sucrerie o'Ryans.">
   <meta name="theme-color" content="#071009">
   <link rel="icon" type="image/png" href="assets/images/main.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="page-contact">
@@ -35,72 +35,59 @@
 
   <main>
     <section class="page-hero">
-      <div class="shell page-hero-grid">
-        <div class="reveal">
-          <p class="eyebrow">Contact et cueillette locale</p>
-          <h1 class="display page-display">Préparez un message clair avant d'écrire.</h1>
+      <div class="shell page-hero-grid contact-top-grid">
+        <article class="detail-card reveal contact-buy-copy">
+          <h1 class="page-display">Trouvez notre sirop d'érable à Embrun.</h1>
           <p class="lead">
-            Le meilleur contact reste encore local et social. Servez-vous du générateur, copiez le
-            message et envoyez-le par Facebook ou par le canal que vous préférez.
+            Vous pouvez acheter notre sirop d'érable au March&eacute; BoniChoix
+            (March&eacute; Alain Viau), situé au 1244 St-Augustin Rd à Embrun, ON.
           </p>
-        </div>
-
-        <article class="history-hero-card reveal">
-          <p class="card-kicker">Meilleur canal public</p>
-          <h2>Facebook reste la principale porte d'entrée.</h2>
-          <p>
-            Utilisez la page publique pour les nouvelles, les questions locales et l'intérêt
-            pendant la saison.
-          </p>
-          <a class="button button-primary" href="https://www.facebook.com/sucrerieoryans/" target="_blank" rel="noreferrer">Ouvrir Facebook</a>
         </article>
+
+        <div class="media-stack reveal">
+          <article class="history-hero-card contact-store-card">
+            <div class="brand-showcase">
+              <img src="assets/images/Bonichoix.png" alt="Logo du March&eacute; BoniChoix">
+            </div>
+            <h2>March&eacute; BoniChoix</h2>
+            <div class="contact-store-meta">
+              <p class="contact-store-address">
+                March&eacute; Alain Viau<br>
+                1244 St-Augustin Rd<br>
+                Embrun, ON
+              </p>
+              <a
+                class="button button-primary contact-store-map"
+                href="https://www.google.com/maps/place/March%C3%A9+Bonichoix+Alain+Viau/@45.2743385,-75.2752539,3a,75y,211.84h,91.2t/data=!3m7!1e1!3m5!1s4L3LOWvOWr9EYdiC7ZVmJQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D-1.2000000000000028%26panoid%3D4L3LOWvOWr9EYdiC7ZVmJQ%26yaw%3D211.84!7i16384!8i8192!4m17!1m9!3m8!1s0x4cce78424a2088a7:0x929eb5bf154c045c!2s1244+St+Augustin+Rd,+Embrun,+ON+K0A+1W0!3b1!8m2!3d45.274131!4d-75.275381!10e5!16s%2Fg%2F11nnktc0rs!3m6!1s0x4cce7842357d6379:0x32b1acb4ed83557a!8m2!3d45.274131!4d-75.275381!10e5!16s%2Fg%2F1tdqt4tl?entry=ttu&g_ep=EgoyMDI2MDMzMC4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Ouvrir la carte
+              </a>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
     <section class="section-shell">
       <div class="shell">
-        <div class="analysis-layout">
-          <article class="detail-card reveal">
-            <p class="card-kicker">Générateur de message</p>
-            <h2>Montez un message pour une cueillette, une visite ou des nouvelles de la saison.</h2>
-            <form id="contactPlanner" class="form-grid">
-              <label>
-                <span>Votre nom</span>
-                <input id="visitorName" name="visitorName" type="text" placeholder="Votre nom">
-              </label>
-
-              <label>
-                <span>Raison</span>
-                <select id="contactReason" name="contactReason">
-                  <option value="venir chercher du sirop sur place">Venir chercher du sirop sur place</option>
-                  <option value="passer pendant le temps des sucres">Passer pendant le temps des sucres</option>
-                  <option value="acheter du sirop localement">Acheter du sirop localement</option>
-                  <option value="rester au courant du prochain bouillage">Rester au courant du prochain bouillage</option>
-                </select>
-              </label>
-
-              <label>
-                <span>Semaine visée</span>
-                <input id="contactWeek" name="contactWeek" type="text" placeholder="Exemple : première semaine d'avril">
-              </label>
-
-              <label class="full-span">
-                <span>Note additionnelle</span>
-                <textarea id="contactNotes" name="contactNotes" rows="4" placeholder="Quelque chose d'utile à préciser?"></textarea>
-              </label>
-            </form>
-
-            <div class="planner-actions">
-              <button id="copyMessage" class="button button-primary" type="button">Copier le message</button>
-              <a class="button button-secondary" href="https://www.facebook.com/sucrerieoryans/" target="_blank" rel="noreferrer">Ouvrir la page Facebook</a>
-            </div>
-          </article>
-
-          <article class="detail-card reveal">
-            <p class="card-kicker">Aperçu du message</p>
-            <textarea id="contactPreview" class="message-preview" rows="12" readonly></textarea>
-          </article>
-        </div>
+        <article class="detail-card reveal contact-simple-card">
+          <h2>Contactez-nous.</h2>
+          <div class="button-row">
+            <a class="button button-primary" href="mailto:sugarshack@oryans.ca">
+              Envoyez-nous un courriel
+            </a>
+            <a
+              class="button button-secondary"
+              href="https://www.facebook.com/sucrerieoryans/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Envoyez-nous un message sur Facebook
+            </a>
+          </div>
+        </article>
       </div>
     </section>
   </main>
@@ -112,16 +99,13 @@
         <p>Une saison des sucres bien de chez nous à Embrun, en Ontario.</p>
       </div>
       <div>
+        <a href="https://www.instagram.com/sucrerie_oryans_sugar_shack/?hl=en" target="_blank" rel="noreferrer">Instagram</a>
         <a href="https://www.facebook.com/sucrerieoryans/" target="_blank" rel="noreferrer">Facebook</a>
-        <a href="history.html">Histoire</a>
-        <a href="forecast.html">Prévision</a>
       </div>
-      <p class="footer-meta">Utilisez le générateur puis envoyez le message dans le canal que vous préférez. <span data-current-year></span></p>
     </div>
   </footer>
 
   <script defer src="js/data.js"></script>
   <script defer src="js/main.js"></script>
-  <script defer src="js/contact.js"></script>
 </body>
 </html>

@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sucrerie o'Ryans | Historique de production</title>
-  <meta name="description" content="Historique interactif de production pour la Sucrerie o'Ryans à partir de l'affiche partagée.">
+  <title>Sucrerie o'Ryans | Production par année</title>
+  <meta name="description" content="Production par année, résumé de saison et suivi des batchs de la Sucrerie o'Ryans.">
   <meta name="theme-color" content="#071009">
   <link rel="icon" type="image/png" href="assets/images/main.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="page-production">
@@ -34,25 +34,35 @@
   </header>
 
   <main>
-    <section class="page-hero">
-      <div class="shell page-hero-grid">
-        <div class="reveal">
-          <p class="eyebrow">Historique de production</p>
-          <h1 class="display page-display">L'affiche, rebâtie en tableau de bord de saison.</h1>
-          <p class="lead">
-            L'image de production d'origine est maintenant traduite en graphique interactif.
-            Comparez les saisons dans une même ligne du temps tout en gardant en vue les litres
-            totaux, la durée du bouillage et le rythme moyen par jour.
-          </p>
-        </div>
-
-        <article class="history-hero-card reveal">
-          <p class="card-kicker">À savoir</p>
-          <h2>Les litres et les jours viennent de l'affiche partagée.</h2>
+    <section class="page-hero production-hero">
+      <div class="shell page-hero-grid production-hero-grid">
+        <article class="history-hero-card production-hero-card reveal">
+          <div class="production-hero-card-head">
+            <p class="card-kicker">En bref</p>
+            <span class="production-hero-badge">2015-2025</span>
+          </div>
+          <h2>Moyenne autour de 550 à 600 L par saison.</h2>
           <p>
-            Les fenêtres de début et de fin de saison ci-dessous sont reconstituées à partir de la
-            mise en page de l'affiche pour permettre une lecture interactive. Les totaux restent
-            rattachés aux valeurs visibles sur l'image d'origine.
+            Une bonne année peut monter jusqu'à 750 ou 800 litres, selon le gel, le débit et la
+            longueur de la saison.
+          </p>
+          <div class="production-highlight-grid" aria-label="Points clés des saisons">
+            <div class="production-highlight">
+              <strong>49 jours</strong>
+              <span>plus longue saison visible en 2023</span>
+            </div>
+            <div class="production-highlight">
+              <strong>25,6 L/jour</strong>
+              <span>meilleur rythme moyen visible en 2020</span>
+            </div>
+            <div class="production-highlight">
+              <strong>335 à 798 L</strong>
+              <span>écart entre petite et grosse année</span>
+            </div>
+          </div>
+          <p class="production-hero-note">
+            Le graphique juste dessous aligne toutes les saisons sur la même ligne du temps pour
+            comparer durée, volume et rythme d'un seul coup d'oeil.
           </p>
         </article>
       </div>
@@ -60,9 +70,12 @@
 
     <section class="section-shell">
       <div class="shell">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Graphique interactif</p>
+        <div class="section-heading reveal production-section-heading">
           <h2>Cliquez sur une saison pour la regarder de plus près.</h2>
+          <p>
+            Chaque barre montre à la fois la fenêtre de production et le total de litres, pour
+            voir rapidement quelles saisons ont été longues, tardives ou particulièrement fortes.
+          </p>
         </div>
 
         <div class="production-layout">
@@ -78,14 +91,60 @@
             <div id="seasonChart" class="season-chart"></div>
           </div>
 
-          <aside id="seasonDetail" class="detail-card reveal">
-            <p class="card-kicker">Détail de la saison</p>
-            <div id="seasonDetailBody" class="detail-summary"></div>
-          </aside>
+          <div class="production-side">
+            <aside id="seasonDetail" class="detail-card reveal">
+              <p class="card-kicker">Détail de la saison</p>
+              <div id="seasonDetailBody" class="detail-summary"></div>
+            </aside>
+
+            <button class="poster-preview reveal" type="button" data-gallery-item data-gallery-src="assets/images/poster.png" data-gallery-alt="Affiche de production de la Sucrerie o'Ryans" aria-label="Ouvrir l'affiche de production en grand">
+              <img src="assets/images/poster.png" alt="Affiche de production de la Sucrerie o'Ryans">
+            </button>
+          </div>
         </div>
 
-        <div id="productionStats" class="forecast-summary"></div>
+        <div id="productionStats" class="forecast-summary production-stats"></div>
+      </div>
+    </section>
 
+    <section class="section-shell">
+      <div class="shell">
+        <div class="section-heading reveal section-heading-tight">
+          <p class="eyebrow">Saison 2025</p>
+          <h2>Un exemple concret de déroulement et de batchs.</h2>
+        </div>
+
+        <div class="card-grid two-up">
+          <article class="detail-card reveal">
+            <p class="card-kicker">Déroulement</p>
+            <ul class="bullet-list">
+              <li>23 au 27 fév. : entaillage des lignes.</li>
+              <li>12 mars : premier bouillage, pas encore de sirop.</li>
+              <li>15 mars : premier batch.</li>
+              <li>12 avril : dernier batch.</li>
+            </ul>
+          </article>
+
+          <article class="detail-card reveal">
+            <p class="card-kicker">Résumé</p>
+            <ul class="bullet-list">
+              <li>Total : 635 L</li>
+              <li>14 batchs</li>
+              <li>Plus gros batch : 70 L</li>
+              <li>Premier bouillage surtout pour partir la saison.</li>
+            </ul>
+          </article>
+        </div>
+
+        <article class="detail-card reveal production-batch-card">
+          <p class="card-kicker">Production par batch (L)</p>
+          <p>35, 43, 38, 70, 31, 60, 66, 54, 63, 44, 50, 23, 42, 16</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell">
+      <div class="shell">
         <div class="section-heading reveal section-heading-tight">
           <p class="eyebrow">Calcul eau-sirop</p>
           <h2>Deux règles utiles derrière les chiffres.</h2>
@@ -114,6 +173,13 @@
     </section>
   </main>
 
+  <div class="gallery-lightbox" data-gallery-lightbox hidden aria-hidden="true">
+    <button class="gallery-lightbox-close" type="button" data-gallery-close aria-label="Fermer l'affiche en grand">Fermer</button>
+    <div class="gallery-lightbox-stage" data-gallery-stage>
+      <img data-gallery-active-image src="" alt="">
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="shell footer-grid">
       <div>
@@ -121,11 +187,9 @@
         <p>Une saison des sucres bien de chez nous à Embrun, en Ontario.</p>
       </div>
       <div>
-        <a href="forecast.html">Prévision des coulées</a>
-        <a href="history.html">Histoire</a>
-        <a href="contact.html">Contact</a>
+        <a href="https://www.instagram.com/sucrerie_oryans_sugar_shack/?hl=en" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.facebook.com/sucrerieoryans/" target="_blank" rel="noreferrer">Facebook</a>
       </div>
-      <p class="footer-meta">Graphique interactif basé sur l'affiche de production partagée. <span data-current-year></span></p>
     </div>
   </footer>
 

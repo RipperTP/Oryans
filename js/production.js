@@ -87,9 +87,6 @@
     const bestVolume = [...knownSeasons].sort((a, b) => b.liters - a.liters)[0];
     const longestSeason = [...knownSeasons].sort((a, b) => b.days - a.days)[0];
     const bestRate = [...knownSeasons].sort((a, b) => b.rate - a.rate)[0];
-    const avgLiters = Math.round(knownSeasons.reduce((sum, season) => sum + season.liters, 0) / knownSeasons.length);
-    const avgDays = Math.round(knownSeasons.reduce((sum, season) => sum + season.days, 0) / knownSeasons.length);
-    const avgRate = knownSeasons.reduce((sum, season) => sum + season.rate, 0) / knownSeasons.length;
 
     stats.innerHTML = `
       <article class="summary-card reveal is-visible">
@@ -106,11 +103,6 @@
         <p class="card-kicker">Meilleur rythme</p>
         <h2>${bestRate.rate.toFixed(1)} L/jour</h2>
         <p>${bestRate.year} a donné le meilleur rendement quotidien visible.</p>
-      </article>
-      <article class="summary-card reveal is-visible">
-        <p class="card-kicker">Saison moyenne</p>
-        <h2>${avgLiters} L</h2>
-        <p>Sur les saisons visibles, la moyenne tourne autour de ${avgDays} jours à ${avgRate.toFixed(1)} L/jour.</p>
       </article>
     `;
   }

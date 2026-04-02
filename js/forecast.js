@@ -5,10 +5,6 @@
   const refreshButton = document.getElementById("refreshForecast");
   const selectedSummary = document.getElementById("selectedDaySummary");
   const selectedNotes = document.getElementById("selectedDayNotes");
-  const plannerOutput = document.getElementById("plannerOutput");
-  const tapCount = document.getElementById("tapCount");
-  const litersPerTap = document.getElementById("litersPerTap");
-  const sapSugar = document.getElementById("sapSugar");
   const tomorrowHeadline = document.getElementById("tomorrowHeadline");
   const tomorrowDetail = document.getElementById("tomorrowDetail");
   const bestHeadline = document.getElementById("bestHeadline");
@@ -202,7 +198,7 @@
     bestDetail.textContent = `${bestDay.category.label} avec un score de ${bestDay.score}/100.`;
 
     weekHeadline.textContent = `${promisingDays} ${strongDayLabel}`;
-    weekDetail.textContent = `Moyenne des sept prochains jours : ${weekAverage}/100.`;
+    weekDetail.textContent = `Moyenne des huit prochains jours : ${weekAverage}/100.`;
   }
 
   function renderSelectedDay(day) {
@@ -230,31 +226,9 @@
 
     selectedNotes.innerHTML = day.notes.slice(0, 5).map((note) => `<li>${note}</li>`).join("");
 
-    renderPlanner();
     grid.querySelectorAll(".day-card").forEach((card) => {
       card.classList.toggle("is-active", card.dataset.date === day.date);
     });
-  }
-
-  function renderPlanner() {
-    if (!selectedDay) {
-      return;
-    }
-
-    const taps = Math.max(1, Number(tapCount.value) || 0);
-    const liters = Math.max(0.2, Number(litersPerTap.value) || 0);
-    const sugar = clamp(Number(sapSugar.value) || 2.2, 1, 5);
-    const expectedSap = taps * liters * (selectedDay.score / 100);
-    const sapPerLiterOfSyrup = 86 / sugar;
-    const syrupLiters = expectedSap / sapPerLiterOfSyrup;
-
-    plannerOutput.innerHTML = `
-      <strong>Estimation pour une journée à ${selectedDay.score}/100</strong><br>
-      Avec <strong>${taps}</strong> entailles et <strong>${liters.toFixed(1)} L</strong> par entaille lors d'une bonne journée,
-      la prévision donne environ <strong>${expectedSap.toFixed(1)} litres d'eau d'érable</strong>.<br>
-      À <strong>${sugar.toFixed(1)} %</strong> de sucre, ça représente à peu près
-      <strong>${syrupLiters.toFixed(1)} litres de sirop fini</strong> selon la règle du 86.
-    `;
   }
 
   function renderForecast(days) {
@@ -299,7 +273,7 @@
       `?latitude=${latitude}` +
       `&longitude=${longitude}` +
       "&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_hours,weather_code,wind_speed_10m_max,sunshine_duration" +
-      "&timezone=auto&forecast_days=7";
+      "&timezone=auto&forecast_days=8";
 
     try {
       const response = await fetch(url, { cache: "no-store" });
@@ -334,10 +308,6 @@
       app.classList.add("is-hidden");
     }
   }
-
-  [tapCount, litersPerTap, sapSugar].forEach((input) => {
-    input.addEventListener("input", renderPlanner);
-  });
 
   if (refreshButton) {
     refreshButton.addEventListener("click", loadForecast);

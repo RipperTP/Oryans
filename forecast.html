@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="assets/images/main.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="page-forecast">
@@ -36,15 +36,9 @@
   <main>
     <section class="page-hero">
       <div class="shell page-hero-grid">
-        <div class="reveal">
+        <div class="forecast-hero-copy reveal">
           <p class="eyebrow">Prévision des coulées</p>
           <h1 class="display page-display">Demain, est-ce que ça va couler fort, rester tranquille ou tomber entre les deux?</h1>
-          <p class="lead">
-            Cet outil lit les sept prochains jours de météo pour Embrun et donne une note à chaque
-            journée selon son potentiel de coulée. Il tient compte du gel-dégel, de la douceur du
-            jour, du soleil, de l'humidité, du vent et du moment dans la saison pour sortir une
-            lecture pratique, façon terrain.
-          </p>
         </div>
 
         <div class="forecast-intro-card reveal">
@@ -89,33 +83,11 @@
 
           <div id="forecastGrid" class="forecast-grid"></div>
 
-          <div class="analysis-layout">
-            <article class="detail-card reveal">
-              <p class="card-kicker">Journée choisie</p>
-              <div id="selectedDaySummary" class="detail-summary"></div>
-              <ul id="selectedDayNotes" class="bullet-list compact"></ul>
-            </article>
-
-            <article class="detail-card reveal">
-              <p class="card-kicker">Planificateur d'entailles</p>
-              <h2>Traduisez la prévision en volume approximatif d'eau d'érable et de sirop.</h2>
-              <form id="tapPlanner" class="form-grid">
-                <label>
-                  <span>Nombre d'entailles</span>
-                  <input id="tapCount" name="tapCount" type="number" min="1" value="125">
-                </label>
-                <label>
-                  <span>Litres par entaille lors d'une bonne journée</span>
-                  <input id="litersPerTap" name="litersPerTap" type="number" min="0.2" step="0.1" value="2.2">
-                </label>
-                <label>
-                  <span>Teneur moyenne en sucre de l'eau d'érable (%)</span>
-                  <input id="sapSugar" name="sapSugar" type="number" min="1" max="5" step="0.1" value="2.2">
-                </label>
-              </form>
-              <div id="plannerOutput" class="planner-output"></div>
-            </article>
-          </div>
+          <article class="detail-card reveal">
+            <p class="card-kicker">Journée choisie</p>
+            <div id="selectedDaySummary" class="detail-summary"></div>
+            <ul id="selectedDayNotes" class="bullet-list compact"></ul>
+          </article>
 
           <div class="source-panel reveal">
             <p class="card-kicker">Logique de prévision</p>
@@ -139,11 +111,9 @@
         <p>Une saison des sucres bien de chez nous à Embrun, en Ontario.</p>
       </div>
       <div>
+        <a href="https://www.instagram.com/sucrerie_oryans_sugar_shack/?hl=en" target="_blank" rel="noreferrer">Instagram</a>
         <a href="https://www.facebook.com/sucrerieoryans/" target="_blank" rel="noreferrer">Facebook</a>
-        <a href="production.html">Historique de production</a>
-        <a href="history.html">Histoire et médias</a>
       </div>
-      <p class="footer-meta">Les données météo en direct sont mises à jour à partir d'Open-Meteo. <span data-current-year></span></p>
     </div>
   </footer>
 

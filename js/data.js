@@ -7,8 +7,8 @@ window.oryansData = {
   productionSeasons: [
     { year: 2014, liters: null, days: null, start: null, end: null, note: "Aucune donnée de production n'a été notée pour 2014." },
     { year: 2015, liters: 335, days: 12, start: "2015-04-01", end: "2015-04-12", note: "Courte saison productive reconstituée à partir de l'affiche." },
-    { year: 2016, liters: 621, days: 21, start: "2016-03-08", end: "2016-03-28", note: "Bonne saison centrée sur mars." },
-    { year: 2017, liters: 437, days: 45, start: "2017-02-22", end: "2017-04-07", note: "Longue saison avec un rendement quotidien plus léger." },
+    { year: 2016, liters: 620, days: 21, start: "2016-03-08", end: "2016-03-28", note: "Saison autour de 620 L, bien centrée sur mars." },
+    { year: 2017, liters: 537, days: 45, start: "2017-02-22", end: "2017-04-07", note: "Longue saison avec un total estimé autour de 537 L." },
     { year: 2018, liters: 798, days: 38, start: "2018-02-20", end: "2018-03-29", note: "Plus gros total visible sur l'affiche." },
     { year: 2019, liters: 533, days: 22, start: "2019-03-28", end: "2019-04-18", note: "Saison tardive qui a quand même donné un bon total." },
     { year: 2020, liters: 763, days: 34, start: "2020-03-06", end: "2020-04-08", note: "Grosse saison étalée sur un mois complet." },
