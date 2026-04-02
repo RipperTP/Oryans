@@ -1309,6 +1309,148 @@ main {
   margin-top: 0;
 }
 
+.page-contact .contact-gallery-shell {
+  padding-top: 0;
+  padding-bottom: 1.35rem;
+}
+
+.page-contact .contact-slideshow-card {
+  display: grid;
+  gap: 0.9rem;
+  padding: 1rem;
+  background:
+    linear-gradient(180deg, rgba(214, 175, 76, 0.08), transparent 22%),
+    linear-gradient(180deg, rgba(14, 31, 19, 0.96), rgba(8, 16, 10, 0.92));
+}
+
+.page-contact .contact-slideshow-copy {
+  display: grid;
+  gap: 0.35rem;
+  max-width: 48rem;
+}
+
+.page-contact .contact-slideshow-copy .eyebrow,
+.page-contact .contact-slideshow-copy h2,
+.page-contact .contact-slideshow-copy p {
+  margin: 0;
+}
+
+.page-contact .contact-slideshow-stage {
+  position: relative;
+  min-height: clamp(300px, 46vw, 680px);
+  aspect-ratio: 16 / 10;
+  border: 2px solid var(--line);
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at top right, rgba(214, 175, 76, 0.16), transparent 28%),
+    rgba(3, 8, 5, 0.8);
+  overflow: hidden;
+}
+
+.page-contact .contact-slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  transform: scale(1.015);
+  transition: opacity 420ms ease, transform 420ms ease;
+  pointer-events: none;
+}
+
+.page-contact .contact-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.page-contact .contact-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: rgba(3, 8, 5, 0.92);
+}
+
+.page-contact .contact-slide figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 1rem 1.05rem;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.84));
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.page-contact .contact-slideshow-controls {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.page-contact .contact-slideshow-button {
+  min-width: 10.5rem;
+}
+
+.page-contact .contact-slideshow-status {
+  display: grid;
+  gap: 0.18rem;
+  min-width: 0;
+}
+
+.page-contact .contact-slideshow-status strong,
+.page-contact .contact-slideshow-status span {
+  display: block;
+  min-width: 0;
+}
+
+.page-contact .contact-slideshow-status strong {
+  font-size: 0.98rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.page-contact .contact-slideshow-status span {
+  color: var(--soft);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-contact .contact-slideshow-dots {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.2rem;
+  scrollbar-width: thin;
+}
+
+.page-contact .contact-slideshow-dot {
+  flex: 0 0 auto;
+  width: 0.95rem;
+  height: 0.95rem;
+  padding: 0;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  transition: 180ms ease;
+}
+
+.page-contact .contact-slideshow-dot:hover,
+.page-contact .contact-slideshow-dot:focus-visible {
+  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.page-contact .contact-slideshow-dot.is-active {
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+  border-color: rgba(214, 175, 76, 0.92);
+}
+
 @media (max-width: 1200px) {
   .page-forecast .page-hero-grid,
   .page-contact .contact-top-grid {
@@ -1802,6 +1944,15 @@ main {
     justify-self: start;
   }
 
+  .page-contact .contact-slideshow-controls {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .page-contact .contact-slideshow-button {
+    min-width: 0;
+  }
+
   .photo-gallery {
     grid-template-columns: 1fr 1fr;
   }
@@ -1949,6 +2100,16 @@ main {
 
   .page-contact .contact-store-map {
     white-space: normal;
+  }
+
+  .page-contact .contact-slideshow-stage {
+    min-height: 240px;
+  }
+
+  .page-contact .contact-slideshow-status strong {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
   }
 
   .page-forecast .page-display {

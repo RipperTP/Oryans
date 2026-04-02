@@ -90,6 +90,53 @@
         </article>
       </div>
     </section>
+
+    <section class="section-shell contact-gallery-shell">
+      <div class="shell">
+        <article class="detail-card reveal contact-slideshow-card" data-contact-slideshow>
+          <div class="contact-slideshow-copy">
+            <p class="eyebrow">Galerie</p>
+            <h2>La sucrerie en images.</h2>
+            <p>
+              Un diaporama qui fait defiler automatiquement les photos et visuels
+              du dossier <code>assets/images</code>.
+            </p>
+          </div>
+
+          <div
+            class="contact-slideshow-stage"
+            data-contact-stage
+          ></div>
+
+          <div class="contact-slideshow-controls">
+            <button
+              class="button button-secondary contact-slideshow-button"
+              type="button"
+              data-contact-prev
+              aria-label="Image precedente"
+            >
+              Precedente
+            </button>
+
+            <div class="contact-slideshow-status">
+              <strong data-contact-caption>Chargement des images...</strong>
+              <span data-contact-counter></span>
+            </div>
+
+            <button
+              class="button button-primary contact-slideshow-button"
+              type="button"
+              data-contact-next
+              aria-label="Image suivante"
+            >
+              Suivante
+            </button>
+          </div>
+
+          <div class="contact-slideshow-dots" data-contact-dots aria-label="Selection de l'image"></div>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -107,5 +154,6 @@
 
   <script defer src="js/data.js"></script>
   <script defer src="js/main.js"></script>
+  <script defer src="js/contact.js"></script>
 </body>
 </html>
