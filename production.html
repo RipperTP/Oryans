@@ -5,18 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sucrerie o'Ryans | Production par année</title>
   <meta name="description" content="Production par année, résumé de saison et suivi des batchs de la Sucrerie o'Ryans.">
-  <meta name="theme-color" content="#071009">
-  <link rel="icon" type="image/png" href="assets/images/main.png">
+  <meta name="theme-color" content="#0A0D0A">
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="page-production">
+
+  <div class="wood-bar"></div>
+
   <header class="site-header">
     <div class="shell nav-shell">
       <a class="brand" href="index.html" aria-label="Accueil Sucrerie o'Ryans">
-        <img class="logo-art" src="assets/images/main.png" alt="Logo de la Sucrerie o'Ryans">
+        <img class="logo-art" src="assets/images/noback.jpg" alt="Logo de la Sucrerie o'Ryans" onerror="this.style.display='none'">
         <span>
           <strong>Sucrerie o'Ryans</strong>
           <small>Embrun, Ontario</small>
@@ -34,11 +37,13 @@
   </header>
 
   <main>
+    <!-- ═══════════ PAGE HERO ═══════════ -->
     <section class="page-hero production-hero">
-      <div class="shell page-hero-grid production-hero-grid">
-        <article class="history-hero-card production-hero-card reveal">
+      <div class="shell">
+        <article class="production-hero-card reveal">
           <div class="production-hero-card-head">
-            <span class="production-hero-badge">2015-2025</span>
+            <p class="card-kicker">En bref</p>
+            <span class="production-hero-badge">2015 &ndash; 2025</span>
           </div>
           <h2>Moyenne autour de 550 à 600 L par saison.</h2>
           <p>
@@ -61,27 +66,32 @@
           </div>
           <p class="production-hero-note">
             Le graphique juste dessous aligne toutes les saisons sur la même ligne du temps pour
-            comparer durée, volume et rythme d'un seul coup d'oeil.
+            comparer durée, volume et rythme d'un seul coup d'œil.
           </p>
         </article>
       </div>
     </section>
 
+    <!-- ═══════════ CHART ═══════════ -->
     <section class="section-shell">
       <div class="shell">
-        <div class="section-heading reveal production-section-heading">
+        <div class="section-heading production-section-heading reveal">
           <h2>Cliquez sur une saison pour la regarder de plus près.</h2>
+          <p>
+            Chaque barre montre à la fois la fenêtre de production et le total de litres, pour
+            voir rapidement quelles saisons ont été longues, tardives ou particulièrement fortes.
+          </p>
         </div>
 
         <div class="production-layout">
           <div class="chart-card reveal">
             <div class="season-axis" aria-hidden="true">
-              <span style="left: 5%;">15 févr.</span>
-              <span style="left: 18.7%;">1 mars</span>
-              <span style="left: 38.7%;">15 mars</span>
-              <span style="left: 62.7%;">1 avr.</span>
-              <span style="left: 75.3%;">15 avr.</span>
-              <span style="left: 93%;">30 avr.</span>
+              <span style="left:5%;">15 févr.</span>
+              <span style="left:18.7%;">1 mars</span>
+              <span style="left:38.7%;">15 mars</span>
+              <span style="left:62.7%;">1 avr.</span>
+              <span style="left:75.3%;">15 avr.</span>
+              <span style="left:93%;">30 avr.</span>
             </div>
             <div id="seasonChart" class="season-chart"></div>
           </div>
@@ -92,19 +102,23 @@
               <div id="seasonDetailBody" class="detail-summary"></div>
             </aside>
 
-            <button class="poster-preview reveal" type="button" data-gallery-item data-gallery-src="assets/images/poster.png" data-gallery-alt="Affiche de production de la Sucrerie o'Ryans" aria-label="Ouvrir l'affiche de production en grand">
-              <img src="assets/images/poster.png" alt="Affiche de production de la Sucrerie o'Ryans">
+            <button class="poster-preview reveal" type="button" data-gallery-item data-gallery-src="assets/images/poster.png" data-gallery-alt="Affiche de production" aria-label="Ouvrir l'affiche de production en grand">
+              <img src="assets/images/poster.png" alt="Affiche de production de la Sucrerie o'Ryans"
+                onerror="this.parentElement.style.display='none'">
             </button>
           </div>
         </div>
 
-        <div id="productionStats" class="forecast-summary production-stats"></div>
+        <div id="productionStats" class="production-stats"></div>
+      </div>
     </section>
 
+    <!-- ═══════════ SAISON 2025 ═══════════ -->
     <section class="section-shell">
       <div class="shell">
-        <div class="section-heading reveal section-heading-tight">
-          <h2>Un exemple de déroulement - Saision 2025.</h2>
+        <div class="section-heading-tight reveal">
+          <p class="eyebrow">Saison 2025</p>
+          <h2>Un exemple concret de déroulement et de batchs.</h2>
         </div>
 
         <div class="card-grid two-up">
@@ -129,16 +143,18 @@
           </article>
         </div>
 
-        <article class="detail-card reveal production-batch-card">
+        <article class="detail-card reveal production-batch-card" style="margin-top:1.25rem;">
           <p class="card-kicker">Production par batch (L)</p>
           <p>35, 43, 38, 70, 31, 60, 66, 54, 63, 44, 50, 23, 42, 16</p>
         </article>
       </div>
     </section>
 
+    <!-- ═══════════ CALCUL ═══════════ -->
     <section class="section-shell">
       <div class="shell">
-        <div class="section-heading reveal section-heading-tight">
+        <div class="section-heading-tight reveal">
+          <p class="eyebrow">Calcul eau-sirop</p>
           <h2>Deux règles utiles derrière les chiffres.</h2>
         </div>
 
@@ -165,8 +181,9 @@
     </section>
   </main>
 
+  <!-- Lightbox for poster -->
   <div class="gallery-lightbox" data-gallery-lightbox hidden aria-hidden="true">
-    <button class="gallery-lightbox-close" type="button" data-gallery-close aria-label="Fermer l'affiche en grand">Fermer</button>
+    <button class="gallery-lightbox-close" type="button" data-gallery-close aria-label="Fermer">Fermer</button>
     <div class="gallery-lightbox-stage" data-gallery-stage>
       <img data-gallery-active-image src="" alt="">
     </div>

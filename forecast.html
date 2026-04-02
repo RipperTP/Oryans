@@ -5,18 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sucrerie o'Ryans | Prévision des coulées</title>
   <meta name="description" content="Calculateur interactif de prévision des coulées pour la Sucrerie o'Ryans à Embrun, en Ontario.">
-  <meta name="theme-color" content="#071009">
-  <link rel="icon" type="image/png" href="assets/images/main.png">
+  <meta name="theme-color" content="#0A0D0A">
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="page-forecast">
+
+  <div class="wood-bar"></div>
+
   <header class="site-header">
     <div class="shell nav-shell">
       <a class="brand" href="index.html" aria-label="Accueil Sucrerie o'Ryans">
-        <img class="logo-art" src="assets/images/main.png" alt="Logo de la Sucrerie o'Ryans">
+        <img class="logo-art" src="assets/images/noback.jpg" alt="Logo de la Sucrerie o'Ryans" onerror="this.style.display='none'">
         <span>
           <strong>Sucrerie o'Ryans</strong>
           <small>Embrun, Ontario</small>
@@ -34,11 +37,12 @@
   </header>
 
   <main>
+    <!-- ═══════════ PAGE HERO ═══════════ -->
     <section class="page-hero">
       <div class="shell page-hero-grid">
         <div class="forecast-hero-copy reveal">
           <p class="eyebrow">Prévision des coulées</p>
-          <h1 class="display page-display">Demain, est-ce que ça va couler fort, rester tranquille ou tomber entre les deux?</h1>
+          <h1 class="display">Demain, est-ce que ça va couler fort, rester tranquille ou tomber entre les deux?</h1>
         </div>
 
         <div class="forecast-intro-card reveal">
@@ -49,18 +53,19 @@
             encore. La note sert surtout à répondre à la question qui revient chaque printemps :
             <em>est-ce que ça vaut la peine de se préparer pour demain?</em>
           </p>
-          <button id="refreshForecast" class="button button-primary" type="button">Rafraîchir la prévision</button>
+          <button id="refreshForecast" class="button-primary" type="button" style="margin-top:1.5rem;">Rafraîchir la prévision</button>
         </div>
       </div>
     </section>
 
+    <!-- ═══════════ FORECAST APP ═══════════ -->
     <section class="section-shell">
       <div class="shell">
         <noscript>
-          <p class="fallback-note">JavaScript est nécessaire pour charger la prévision en direct d'Embrun.</p>
+          <p class="loading-panel">JavaScript est nécessaire pour charger la prévision en direct d'Embrun.</p>
         </noscript>
 
-        <div id="forecastStatus" class="loading-panel">Chargement des données météo pour Embrun...</div>
+        <div id="forecastStatus" class="loading-panel">Chargement des données météo pour Embrun&hellip;</div>
 
         <div id="forecastApp" class="forecast-app is-hidden">
           <div class="forecast-summary">

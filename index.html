@@ -5,18 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sucrerie o'Ryans | Cabane à sucre d'Embrun</title>
   <meta name="description" content="Le site de la Sucrerie o'Ryans à Embrun, en Ontario : histoire locale, prévision des coulées, archive de production et infos de contact.">
-  <meta name="theme-color" content="#071009">
-  <link rel="icon" type="image/png" href="assets/images/main.png">
+  <meta name="theme-color" content="#0A0D0A">
+  <link rel="icon" type="image/png" href="assets/images/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="page-home">
+
+  <div class="wood-bar"></div>
+
   <header class="site-header">
     <div class="shell nav-shell">
       <a class="brand" href="index.html" aria-label="Accueil Sucrerie o'Ryans">
-        <img class="logo-art" src="assets/images/main.png" alt="Logo de la Sucrerie o'Ryans">
+        <img class="logo-art" src="assets/images/noback.jpg" alt="Logo de la Sucrerie o'Ryans" onerror="this.style.display='none'">
         <span>
           <strong>Sucrerie o'Ryans</strong>
           <small>Embrun, Ontario</small>
@@ -34,40 +37,40 @@
   </header>
 
   <main>
-    <section class="hero hero-home">
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="hero-home">
       <div class="shell hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Sucrerie o'Ryans | Cabane à sucre</p>
-          <h1 class="display">Du bois à la table - Sirop d'érable depuis 2014</h1>
+          <p class="eyebrow">Sucrerie o'Ryans &mdash; Cabane à sucre</p>
+          <h1 class="display">Du bois à la table &mdash; Sirop d'érable depuis 2014</h1>
           <p class="lead">
             Une cabane à sucre artisanale en Ontario qui produit du sirop d'érable pur à chaque
             printemps, avec passion, rigueur et savoir-faire.
           </p>
           <div class="button-row">
-            <a class="button button-primary" href="forecast.html">Voir la prévision</a>
-            <a class="button button-secondary" href="production.html">Voir la production</a>
+            <a class="button-primary" href="forecast.html">Voir la prévision</a>
+            <a class="button-secondary" href="production.html">Voir la production</a>
           </div>
-          <ul class="fact-strip">
-            <li>Plus de 10 ans d'expérience</li>
-            <li>Production artisanale</li>
-            <li>Suivi détaillé de chaque batch</li>
-            <li>Travail d'équipe, terrain et tradition</li>
-          </ul>
         </div>
 
         <div class="hero-media reveal">
-          <article class="media-card hero-side-image">
-            <div class="media-card-image hero-side-frame">
-              <img src="assets/images/download.png" alt="Cabane de la Sucrerie o'Ryans en hiver">
+          <div class="media-card">
+            <div class="hero-side-frame">
+              <!-- Replace src with your actual image path -->
+              <img src="assets/images/download.png" alt="Cabane de la Sucrerie o'Ryans en hiver"
+                onerror="this.parentElement.innerHTML='<div class=\'img-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><polyline points=\'21 15 16 10 5 21\'/></svg>Photo à venir</div>'">
             </div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- ═══════════ ROUTE CARDS ═══════════ -->
     <section class="section-shell">
       <div class="shell">
-
+        <div class="section-heading reveal">
+          <h2>Depuis 2014, un projet entre amis devenu une érablière bien structurée.</h2>
+        </div>
 
         <div class="card-grid two-up">
           <a class="route-card reveal" href="forecast.html">
@@ -77,7 +80,7 @@
 
           <a class="route-card reveal" href="history.html">
             <p class="card-kicker">Histoire</p>
-            <h3>Parcourez l'histoire de la cabane a sucre O'Ryans.</h3>
+            <h3>Parcourez l'histoire de la cabane à sucre O'Ryans.</h3>
           </a>
 
           <a class="route-card reveal" href="production.html">
@@ -87,57 +90,20 @@
 
           <a class="route-card reveal" href="contact.html">
             <p class="card-kicker">Contact</p>
-            <h3>Nous contacter et ou acheter notre sirop.</h3>
+            <h3>Nous contacter et où acheter notre sirop.</h3>
           </a>
         </div>
       </div>
     </section>
 
-    <section class="section-shell">
-      <div class="shell">
-        <div class="photo-gallery reveal" data-gallery aria-label="Galerie photo de la Sucrerie o'Ryans">
-          <button class="gallery-shot" type="button" data-gallery-item data-gallery-src="assets/images/woodlog.jpg" data-gallery-alt="Enseigne de bois sculptée de la Sucrerie o'Ryans avec trèfle" aria-label="Ouvrir la photo de l'enseigne">
-            <img src="assets/images/woodlog.jpg" alt="Enseigne de bois sculptée de la Sucrerie o'Ryans avec trèfle">
-          </button>
-          <button class="gallery-shot" type="button" data-gallery-item data-gallery-src="assets/images/setup.jpg" data-gallery-alt="Installation de la Sucrerie o'Ryans pendant la préparation de la saison" aria-label="Ouvrir la photo de l'installation">
-            <img src="assets/images/setup.jpg" alt="Installation de la Sucrerie o'Ryans pendant la préparation de la saison">
-          </button>
-          <button class="gallery-shot" type="button" data-gallery-item data-gallery-src="assets/images/glassbottle.jpg" data-gallery-alt="Bouteille de verre de sirop d'érable de la Sucrerie o'Ryans" aria-label="Ouvrir la photo de la bouteille">
-            <img src="assets/images/glassbottle.jpg" alt="Bouteille de verre de sirop d'érable de la Sucrerie o'Ryans">
-          </button>
-          <button class="gallery-shot" type="button" data-gallery-item data-gallery-src="assets/images/hose.jpg" data-gallery-alt="Tubulure et boyaux de la Sucrerie o'Ryans dans l'érablière" aria-label="Ouvrir la photo de la tubulure">
-            <img src="assets/images/hose.jpg" alt="Tubulure et boyaux de la Sucrerie o'Ryans dans l'érablière">
-          </button>
-          <button class="gallery-shot" type="button" data-gallery-item data-gallery-src="assets/images/canoryan.jpg" data-gallery-alt="Canne de sirop d'érable de la Sucrerie o'Ryans" aria-label="Ouvrir la photo de la canne">
-            <img src="assets/images/canoryan.jpg" alt="Canne de sirop d'érable de la Sucrerie o'Ryans">
-          </button>
-          <button class="gallery-shot" type="button" data-gallery-item data-gallery-src="assets/images/counter.jpg" data-gallery-alt="Présentoir des produits de la Sucrerie o'Ryans au comptoir" aria-label="Ouvrir la photo du comptoir">
-            <img src="assets/images/counter.jpg" alt="Présentoir des produits de la Sucrerie o'Ryans au comptoir">
-          </button>
-          <button class="gallery-shot" type="button" data-gallery-item data-gallery-src="assets/images/draw.jpg" data-gallery-alt="Tire d'érable de la Sucrerie o'Ryans servie sur la neige" aria-label="Ouvrir la photo de la tire d'érable">
-            <img src="assets/images/draw.jpg" alt="Tire d'érable de la Sucrerie o'Ryans servie sur la neige">
-          </button>
-          <button class="gallery-shot" type="button" data-gallery-item data-gallery-src="assets/images/cantuque.jpg" data-gallery-alt="Présentoir avec une canne de sirop et une tuque de la Sucrerie o'Ryans" aria-label="Ouvrir la photo de la tuque et de la canne">
-            <img src="assets/images/cantuque.jpg" alt="Présentoir avec une canne de sirop et une tuque de la Sucrerie o'Ryans">
-          </button>
-          <button class="gallery-shot" type="button" data-gallery-item data-gallery-src="assets/images/tuque.jpg" data-gallery-alt="Tuque de la Sucrerie o'Ryans en présentation" aria-label="Ouvrir la photo de la tuque">
-            <img src="assets/images/tuque.jpg" alt="Tuque de la Sucrerie o'Ryans en présentation">
-          </button>
-          <button class="gallery-shot" type="button" data-gallery-item data-gallery-src="assets/images/overall.jpg" data-gallery-alt="Salopette de la Sucrerie o'Ryans en présentation" aria-label="Ouvrir la photo de la salopette">
-            <img src="assets/images/overall.jpg" alt="Salopette de la Sucrerie o'Ryans en présentation">
-          </button>
-        </div>
-      </div>
-    </section>
-  </main>
-
+  <!-- Lightbox -->
   <div class="gallery-lightbox" data-gallery-lightbox hidden aria-hidden="true">
     <button class="gallery-lightbox-close" type="button" data-gallery-close aria-label="Fermer la visionneuse">Fermer</button>
-    <button class="gallery-lightbox-nav is-prev" type="button" data-gallery-prev aria-label="Photo précédente">Précédent</button>
+    <button class="gallery-lightbox-nav is-prev" type="button" data-gallery-prev aria-label="Photo précédente">&#8592;</button>
     <div class="gallery-lightbox-stage" data-gallery-stage>
       <img data-gallery-active-image src="" alt="">
     </div>
-    <button class="gallery-lightbox-nav is-next" type="button" data-gallery-next aria-label="Photo suivante">Suivant</button>
+    <button class="gallery-lightbox-nav is-next" type="button" data-gallery-next aria-label="Photo suivante">&#8594;</button>
   </div>
 
   <footer class="site-footer">

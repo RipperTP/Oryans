@@ -198,7 +198,7 @@
     bestDetail.textContent = `${bestDay.category.label} avec un score de ${bestDay.score}/100.`;
 
     weekHeadline.textContent = `${promisingDays} ${strongDayLabel}`;
-    weekDetail.textContent = `Moyenne des huit prochains jours : ${weekAverage}/100.`;
+    weekDetail.textContent = `Moyenne des six prochains jours : ${weekAverage}/100.`;
   }
 
   function renderSelectedDay(day) {
@@ -273,7 +273,7 @@
       `?latitude=${latitude}` +
       `&longitude=${longitude}` +
       "&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_hours,weather_code,wind_speed_10m_max,sunshine_duration" +
-      "&timezone=auto&forecast_days=8";
+      "&timezone=auto&forecast_days=6";
 
     try {
       const response = await fetch(url, { cache: "no-store" });
