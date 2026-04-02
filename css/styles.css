@@ -1089,6 +1089,8 @@ main {
   flex: 1 0 auto;
   display: grid;
   gap: 0.25rem;
+  align-content: start;
+  grid-auto-rows: max-content;
 }
 
 .shell {
@@ -1307,6 +1309,27 @@ main {
   margin-top: 0;
 }
 
+@media (max-width: 1200px) {
+  .page-forecast .page-hero-grid,
+  .page-contact .contact-top-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-forecast .forecast-hero-copy,
+  .page-forecast .forecast-intro-card {
+    max-width: none;
+  }
+
+  .page-forecast .forecast-intro-card {
+    margin-left: 0;
+  }
+
+  .page-contact .media-stack,
+  .page-contact .contact-store-card {
+    height: auto;
+  }
+}
+
 .page-home .hero-copy {
   position: relative;
   padding: 1.1rem;
@@ -1503,29 +1526,6 @@ main {
 .stat-card,
 .mini-panel {
   padding: 1rem;
-}
-
-.media-card::after,
-.feature-card::after,
-.route-card::after,
-.summary-card::after,
-.detail-card::after,
-.history-hero-card::after,
-.forecast-intro-card::after,
-.timeline-card::after,
-.media-link-card::after,
-.chart-card::after,
-.source-panel::after,
-.loading-panel::after,
-.stat-card::after,
-.mini-panel::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent), var(--gold));
 }
 
 .page-home .hero-media,
@@ -1949,6 +1949,15 @@ main {
 
   .page-contact .contact-store-map {
     white-space: normal;
+  }
+
+  .page-forecast .page-display {
+    font-size: clamp(2rem, 10vw, 2.9rem);
+  }
+
+  .page-contact .contact-buy-copy .page-display {
+    max-width: 14ch;
+    font-size: clamp(1.95rem, 10vw, 2.75rem);
   }
 
   .chart-card {
