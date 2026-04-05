@@ -15,7 +15,13 @@
   const seasonStartMonth = 2;
   const seasonStartDay = 15;
   const totalSeasonDays = 75;
-  let activeSeason = seasons.find((season) => season.liters);
+  const currentYear = new Date().getFullYear();
+  const currentSeason = seasons.find((season) => season.year === currentYear);
+  const latestSeasonWithVolume = [...seasons].reverse().find((season) => season.liters);
+  let activeSeason =
+    (currentSeason && currentSeason.liters ? currentSeason : null) ||
+    latestSeasonWithVolume ||
+    seasons[0];
 
   function dayIndex(dateString) {
     const date = new Date(`${dateString}T12:00:00`);
@@ -54,6 +60,30 @@
     activeSeason = season;
 
     if (!season.liters) {
+      if (season.statusLabel) {
+        detailBody.innerHTML = `
+          <h3>${season.year}</h3>
+          <p><strong>${season.statusLabel}</strong></p>
+          <p>${season.note}</p>
+          <div class="detail-summary-grid">
+            <div class="detail-metric">
+              <strong>--</strong>
+              <span>Total de sirop</span>
+            </div>
+            <div class="detail-metric">
+              <strong>--</strong>
+              <span>Jours de bouillage</span>
+            </div>
+            <div class="detail-metric">
+              <strong>À suivre</strong>
+              <span>Rythme moyen</span>
+            </div>
+          </div>
+          <p>Fenêtre approximative : saison en cours.</p>
+        `;
+        return;
+      }
+
       detailBody.innerHTML = `
         <h3>${season.year}</h3>
         <p>${season.note}</p>
@@ -110,11 +140,13 @@
   function renderChart() {
     chart.innerHTML = seasons.map((season) => {
       if (!season.start || !season.end || !season.liters) {
+        const emptyLabel = season.statusLabel || "Aucune donnée de production notée.";
+        const emptyClass = season.statusLabel ? "season-empty is-in-progress" : "season-empty";
         return `
           <button class="season-row" type="button" data-year="${season.year}">
             <div class="season-year">${season.year}</div>
             <div class="season-track">
-              <div class="season-empty">Aucune donnée de production notée.</div>
+              <div class="${emptyClass}">${emptyLabel}</div>
             </div>
           </button>
         `;

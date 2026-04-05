@@ -5,12 +5,15 @@
   const refreshButton = document.getElementById("refreshForecast");
   const selectedSummary = document.getElementById("selectedDaySummary");
   const selectedNotes = document.getElementById("selectedDayNotes");
+  const seasonEndSummary = document.getElementById("seasonEndSummary");
+  const seasonEndNotes = document.getElementById("seasonEndNotes");
   const tomorrowHeadline = document.getElementById("tomorrowHeadline");
   const tomorrowDetail = document.getElementById("tomorrowDetail");
   const bestHeadline = document.getElementById("bestHeadline");
   const bestDetail = document.getElementById("bestDetail");
   const weekHeadline = document.getElementById("weekHeadline");
   const weekDetail = document.getElementById("weekDetail");
+  const millisecondsPerDay = 1000 * 60 * 60 * 24;
 
   if (!app || !status || !grid || !window.oryansData) {
     return;
@@ -46,11 +49,33 @@
     return Math.min(max, Math.max(min, value));
   }
 
+  function parseDate(dateString) {
+    return new Date(`${dateString}T12:00:00`);
+  }
+
+  function addDays(date, days) {
+    const next = new Date(date);
+    next.setDate(next.getDate() + days);
+    return next;
+  }
+
+  function average(values) {
+    return values.reduce((sum, value) => sum + value, 0) / values.length;
+  }
+
+  function formatMonthDay(date) {
+    return new Intl.DateTimeFormat("fr-CA", { month: "short", day: "numeric" }).format(date);
+  }
+
+  function formatLongDate(date) {
+    return new Intl.DateTimeFormat("fr-CA", { month: "long", day: "numeric" }).format(date);
+  }
+
   function formatDateLabel(dateString) {
-    const date = new Date(`${dateString}T12:00:00`);
+    const date = parseDate(dateString);
     return {
       day: new Intl.DateTimeFormat("fr-CA", { weekday: "short" }).format(date),
-      short: new Intl.DateTimeFormat("fr-CA", { month: "short", day: "numeric" }).format(date)
+      short: formatMonthDay(date)
     };
   }
 
@@ -59,7 +84,7 @@
   }
 
   function getSeasonWeight(dateString) {
-    const date = new Date(`${dateString}T12:00:00`);
+    const date = parseDate(dateString);
     const month = date.getMonth() + 1;
     const day = date.getDate();
 
@@ -89,6 +114,17 @@
       return { key: "fair", label: "Potentiel moyen", summary: "correct pour une petite coulée" };
     }
     return { key: "quiet", label: "Plutôt tranquille", summary: "assez tranquille pour la coulée" };
+  }
+
+  function dayOfSeason(dateString) {
+    const date = parseDate(dateString);
+    const base = new Date(`${date.getFullYear()}-02-15T12:00:00`);
+    return Math.round((date - base) / millisecondsPerDay);
+  }
+
+  function seasonDateFromIndex(year, index) {
+    const base = new Date(`${year}-02-15T12:00:00`);
+    return addDays(base, index);
   }
 
   function scoreDay(day, index, allDays) {
@@ -231,6 +267,138 @@
     });
   }
 
+  function renderSeasonEndEstimate(days) {
+    if (!seasonEndSummary || !seasonEndNotes || !window.oryansData.productionSeasons?.length) {
+      return;
+    }
+
+    const history = window.oryansData.productionSeasons
+      .filter((season) => season.end)
+      .sort((left, right) => left.year - right.year);
+
+    if (!history.length) {
+      seasonEndSummary.innerHTML = `
+        <h3>Estimation indisponible</h3>
+        <p>Il manque encore assez d'historique pour proposer une fin de saison crédible.</p>
+      `;
+      seasonEndNotes.innerHTML = "";
+      return;
+    }
+
+    const historyWithWeights = history.map((season, index) => {
+      const endIndex = dayOfSeason(season.end);
+      const recencyWeight = 1 + index / history.length;
+      const productionWeight = season.liters ? clamp(season.liters / 600, 0.75, 1.35) : 1;
+      return {
+        ...season,
+        endIndex,
+        weight: recencyWeight * productionWeight
+      };
+    });
+
+    const weightedAverageIndex = Math.round(
+      historyWithWeights.reduce((sum, season) => sum + season.endIndex * season.weight, 0) /
+      historyWithWeights.reduce((sum, season) => sum + season.weight, 0)
+    );
+
+    const recentHistory = historyWithWeights.slice(-4);
+    const recentAverageIndex = Math.round(average(recentHistory.map((season) => season.endIndex)));
+    const earliestIndex = Math.min(...historyWithWeights.map((season) => season.endIndex));
+    const latestIndex = Math.max(...historyWithWeights.map((season) => season.endIndex));
+    const referenceDay = parseDate(days[0].date);
+    const referenceYear = referenceDay.getFullYear();
+    const currentIndex = dayOfSeason(days[0].date);
+    const classicCycles = days.filter(isClassicCycle).length;
+    const promisingDays = days.filter((day) => day.score >= 60).length;
+    const quietDays = days.filter((day) => day.score < 40).length;
+    const warmNights = days.filter((day) => day.min > 2).length;
+    const hotDays = days.filter((day) => day.max > 15).length;
+    const coldDays = days.filter((day) => day.max <= 0).length;
+    const weekAverageScore = Math.round(average(days.map((day) => day.score)));
+    const lastSupportiveIndex = days.reduce((lastIndex, day, index) => (
+      day.score >= 60 || isClassicCycle(day) ? index : lastIndex
+    ), -1);
+
+    let adjustment = 0;
+    adjustment += Math.round((recentAverageIndex - weightedAverageIndex) * 0.25);
+    adjustment += classicCycles;
+    adjustment += Math.max(0, promisingDays - 1);
+    adjustment -= Math.round(warmNights * 1.1);
+    adjustment -= hotDays * 2;
+    adjustment -= coldDays;
+    adjustment -= Math.max(0, quietDays - 2);
+
+    if (lastSupportiveIndex >= days.length - 2) {
+      adjustment += 2;
+    }
+
+    if (lastSupportiveIndex === -1) {
+      adjustment -= 2;
+    }
+
+    adjustment = clamp(adjustment, -7, 8);
+
+    const estimateCeiling = Math.max(latestIndex + 8, currentIndex + 1);
+    const estimatedIndex = clamp(
+      Math.round(weightedAverageIndex + adjustment),
+      currentIndex + 1,
+      estimateCeiling
+    );
+
+    const estimatedDate = seasonDateFromIndex(referenceYear, estimatedIndex);
+    const averageDate = seasonDateFromIndex(referenceYear, weightedAverageIndex);
+    const recentAverageDate = seasonDateFromIndex(referenceYear, recentAverageIndex);
+    const earliestDate = seasonDateFromIndex(referenceYear, earliestIndex);
+    const latestDate = seasonDateFromIndex(referenceYear, latestIndex);
+    const remainingDays = Math.max(1, Math.round((estimatedDate - referenceDay) / millisecondsPerDay));
+    const supportiveLabel = lastSupportiveIndex >= 0 ? formatDateLabel(days[lastSupportiveIndex].date) : null;
+
+    const confidence = clamp(
+      64 +
+        classicCycles * 4 +
+        promisingDays * 3 -
+        warmNights * 6 -
+        hotDays * 7 -
+        Math.max(0, currentIndex - weightedAverageIndex) * 2,
+      38,
+      88
+    );
+
+    seasonEndSummary.innerHTML = `
+      <h3>Vers le ${formatLongDate(estimatedDate)}</h3>
+      <p>En combinant la météo des six prochains jours et l'historique de production, la saison semble pouvoir s'étirer jusque <strong>${formatLongDate(estimatedDate)}</strong>.</p>
+      <div class="detail-summary-grid">
+        <div class="detail-metric">
+          <strong>${remainingDays} j</strong>
+          <span>reste estimé</span>
+        </div>
+        <div class="detail-metric">
+          <strong>${confidence}/100</strong>
+          <span>confiance</span>
+        </div>
+        <div class="detail-metric">
+          <strong>${formatMonthDay(recentAverageDate)}</strong>
+          <span>repère récent</span>
+        </div>
+      </div>
+    `;
+
+    const notes = [
+      `L'historique visible finit entre ${formatMonthDay(earliestDate)} et ${formatMonthDay(latestDate)}, avec une moyenne pondérée autour du ${formatMonthDay(averageDate)}.`,
+      classicCycles
+        ? `${classicCycles} journée(s) gardent un vrai cycle gel-dégel dans la prévision, ce qui repousse un peu la fin.`
+        : "Le gel-dégel devient rare dans la prévision, ce qui rapproche la fin de saison.",
+      warmNights || hotDays
+        ? `Les nuits trop douces et les pointes plus chaudes tirent l'estimation vers l'avant sur les ${days.length} prochains jours.`
+        : "Aucune grosse poussée de chaleur n'apparaît pour l'instant, donc la saison garde encore un peu d'air.",
+      supportiveLabel
+        ? `Le dernier bloc vraiment encourageant ressort autour de ${supportiveLabel.day} ${supportiveLabel.short}, avec une semaine qui tourne près de ${weekAverageScore}/100.`
+        : `La semaine tourne autour de ${weekAverageScore}/100, sans vraie fenêtre forte pour prolonger beaucoup plus loin.`
+    ];
+
+    seasonEndNotes.innerHTML = notes.map((note) => `<li>${note}</li>`).join("");
+  }
+
   function renderForecast(days) {
     grid.innerHTML = days.map((day) => {
       const label = formatDateLabel(day.date);
@@ -298,6 +466,7 @@
       renderSummary(scoredDays);
       renderForecast(scoredDays);
       renderSelectedDay([...scoredDays].sort((a, b) => b.score - a.score)[0]);
+      renderSeasonEndEstimate(scoredDays);
 
       status.classList.add("is-hidden");
       app.classList.remove("is-hidden");

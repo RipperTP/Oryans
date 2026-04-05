@@ -6,7 +6,7 @@
   <title>Sucrerie o'Ryans | Prévision des coulées</title>
   <meta name="description" content="Calculateur interactif de prévision des coulées pour la Sucrerie o'Ryans à Embrun, en Ontario.">
   <meta name="theme-color" content="#0A0D0A">
-  <link rel="icon" type="image/png" href="assets/images/icon.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/images/nicon.png?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -88,11 +88,19 @@
 
           <div id="forecastGrid" class="forecast-grid"></div>
 
-          <article class="detail-card reveal">
-            <p class="card-kicker">Journée choisie</p>
-            <div id="selectedDaySummary" class="detail-summary"></div>
-            <ul id="selectedDayNotes" class="bullet-list compact"></ul>
-          </article>
+          <div class="forecast-detail-grid">
+            <article class="detail-card reveal">
+              <p class="card-kicker">Journée choisie</p>
+              <div id="selectedDaySummary" class="detail-summary"></div>
+              <ul id="selectedDayNotes" class="bullet-list compact"></ul>
+            </article>
+
+            <article class="detail-card reveal">
+              <p class="card-kicker">Fin de saison estimée</p>
+              <div id="seasonEndSummary" class="detail-summary"></div>
+              <ul id="seasonEndNotes" class="bullet-list compact"></ul>
+            </article>
+          </div>
 
           <div class="source-panel reveal">
             <p class="card-kicker">Logique de prévision</p>

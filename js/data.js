@@ -16,7 +16,8 @@ window.oryansData = {
     { year: 2022, liters: 564, days: 29, start: "2022-02-28", end: "2022-03-28", note: "Saison équilibrée avec un bon volume sur mars." },
     { year: 2023, liters: 485, days: 49, start: "2023-02-23", end: "2023-04-12", note: "Plus longue saison visible sur l'affiche." },
     { year: 2024, liters: 437, days: 39, start: "2024-02-21", end: "2024-03-30", note: "Encore une longue saison avec un total modéré." },
-    { year: 2025, liters: 635, days: 32, start: "2025-03-11", end: "2025-04-11", note: "Saison récente avec un bon rendement et une durée nette." }
+    { year: 2025, liters: 635, days: 32, start: "2025-03-11", end: "2025-04-11", note: "Saison récente avec un bon rendement et une durée nette." },
+    { year: 2026, liters: null, days: null, start: null, end: null, statusLabel: "En cours...", note: "" }
   ],
   researchSources: [
     {

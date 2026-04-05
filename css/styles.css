@@ -294,6 +294,7 @@ strong { color: var(--cream); }
   letter-spacing: 0.07em; text-transform: uppercase;
   background: var(--green-deep); color: var(--green-light);
   border: 1px solid rgba(62,138,70,0.3); border-radius: 100px; padding: 0.32rem 0.9rem;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.16);
 }
 
 .hero-media { position: relative; }
@@ -510,6 +511,7 @@ body.is-gallery-open { overflow: hidden; }
 .summary-card p { font-size: 0.88rem; color: var(--cream-muted); }
 
 .forecast-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 0.85rem; margin-bottom: 2rem; }
+.forecast-detail-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
 
 .day-card {
   background: var(--black-card); border: 1.5px solid var(--black-border);
@@ -614,6 +616,7 @@ body.is-gallery-open { overflow: hidden; }
 .season-span strong { font-family: 'Cinzel', serif; font-size: 0.7rem; font-weight: 700; color: var(--gold-light); white-space: nowrap; }
 .season-span small { font-family: 'Inter', sans-serif; font-size: 0.6rem; color: var(--cream-muted); white-space: nowrap; }
 .season-empty { font-family: 'Inter', sans-serif; font-size: 0.68rem; color: var(--cream-muted); font-style: italic; display: flex; align-items: center; height: 100%; padding-left: 0.6rem; }
+.season-empty.is-in-progress { color: var(--gold-light); font-style: normal; letter-spacing: 0.04em; }
 
 .production-side { display: flex; flex-direction: column; gap: 1.25rem; }
 
@@ -689,6 +692,7 @@ img { max-width: 100%; height: auto; }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-media { display: none; }
   .page-hero-grid { grid-template-columns: 1fr; }
+  .forecast-detail-grid { grid-template-columns: 1fr; }
   .production-layout { grid-template-columns: 1fr; }
   .production-highlight-grid { grid-template-columns: 1fr 1fr; }
   .contact-top-grid { grid-template-columns: 1fr; }
@@ -741,6 +745,7 @@ img { max-width: 100%; height: auto; }
   .gallery-strip-section { padding: 3rem 0; }
   .gallery-columns-wrap { height: 500px; }
   .hero-home { padding: 4rem 0 3rem; min-height: auto; }
+  .page-home .fact-strip { display: none; }
   .card-grid.two-up { grid-template-columns: 1fr; }
   .production-highlight-grid { grid-template-columns: 1fr; }
   .detail-summary-grid { grid-template-columns: 1fr 1fr; }
