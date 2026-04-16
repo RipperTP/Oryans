@@ -50,7 +50,7 @@
             Une bonne année peut monter jusqu'à 750 ou 800 litres, selon le gel, le débit et la
             longueur de la saison.
           </p>
-          <div class="production-highlight-grid" aria-label="Points clés des saisons">
+          <div class="production-highlight-grid" role="group" aria-label="Points clés des saisons">
             <div class="production-highlight">
               <strong>49 jours</strong>
               <span>plus longue saison visible en 2023</span>
@@ -64,10 +64,6 @@
               <span>écart entre petite et grosse année</span>
             </div>
           </div>
-          <p class="production-hero-note">
-            Le graphique juste dessous aligne toutes les saisons sur la même ligne du temps pour
-            comparer durée, volume et rythme d'un seul coup d'œil.
-          </p>
         </article>
       </div>
     </section>
@@ -77,21 +73,17 @@
       <div class="shell">
         <div class="section-heading production-section-heading reveal">
           <h2>Cliquez sur une saison pour la regarder de plus près.</h2>
-          <p>
-            Chaque barre montre à la fois la fenêtre de production et le total de litres, pour
-            voir rapidement quelles saisons ont été longues, tardives ou particulièrement fortes.
-          </p>
         </div>
 
         <div class="production-layout">
           <div class="chart-card reveal">
             <div class="season-axis" aria-hidden="true">
-              <span style="left:5%;">15 févr.</span>
-              <span style="left:18.7%;">1 mars</span>
-              <span style="left:38.7%;">15 mars</span>
-              <span style="left:62.7%;">1 avr.</span>
-              <span style="left:75.3%;">15 avr.</span>
-              <span style="left:93%;">30 avr.</span>
+              <span class="axis-pos-1">15 févr.</span>
+              <span class="axis-pos-2">1 mars</span>
+              <span class="axis-pos-3">15 mars</span>
+              <span class="axis-pos-4">1 avr.</span>
+              <span class="axis-pos-5">15 avr.</span>
+              <span class="axis-pos-6">30 avr.</span>
             </div>
             <div id="seasonChart" class="season-chart"></div>
           </div>
@@ -113,48 +105,20 @@
       </div>
     </section>
 
-    <!-- ═══════════ CALCUL ═══════════ -->
-    <section class="section-shell">
-      <div class="shell">
-        <div class="section-heading-tight reveal">
-          <p class="eyebrow">Calcul eau-sirop</p>
-          <h2>Deux règles utiles derrière les chiffres.</h2>
-        </div>
-
-        <div class="card-grid two-up">
-          <article class="feature-card reveal">
-            <p class="card-kicker">Règle rapide</p>
-            <h3>Environ 40 litres d'eau d'érable pour 1 litre de sirop.</h3>
-            <p>
-              La règle classique du 40 pour 1 donne une bonne estimation rapide pour l'eau
-              d'érable à sucre.
-            </p>
-          </article>
-
-          <article class="feature-card reveal">
-            <p class="card-kicker">Règle plus précise</p>
-            <h3>La règle du 86 s'ajuste selon le taux de sucre.</h3>
-            <p>
-              Si l'eau d'érable est en moyenne à 2,2 % de sucre, un litre de sirop demande environ
-              <strong>86 / 2.2</strong> litres d'eau, soit autour de 39 litres.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
   </main>
 
   <!-- Lightbox for poster -->
   <div class="gallery-lightbox" data-gallery-lightbox hidden aria-hidden="true">
     <button class="gallery-lightbox-close" type="button" data-gallery-close aria-label="Fermer">Fermer</button>
     <div class="gallery-lightbox-stage" data-gallery-stage>
-      <img data-gallery-active-image src="" alt="">
+      <img data-gallery-active-image src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
     </div>
   </div>
 
-  <section aria-label="Drapeau franco-ontarien" style="padding:1rem 0 3.25rem;">
-    <div class="shell" style="display:flex;justify-content:center;">
-      <img src="assets/images/Franco-Ontarian_flag.svg.png" alt="Drapeau franco-ontarien" loading="lazy" style="display:block;width:min(120px,28vw);height:auto;">
+  <section class="flag-section" aria-label="Drapeau franco-ontarien">
+    <div class="flag-section-bg"></div>
+    <div class="shell flag-section-inner">
+      <img class="flag-img" src="assets/images/Franco-Ontarian_flag.svg.png" alt="Drapeau franco-ontarien" loading="lazy">
     </div>
   </section>
 
