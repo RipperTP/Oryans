@@ -113,7 +113,7 @@
     if (score >= 40) {
       return { key: "fair", label: "Potentiel moyen", summary: "correct pour une petite coulée" };
     }
-    return { key: "quiet", label: "Plutôt tranquille", summary: "assez tranquille pour la coulée" };
+    return { key: "quiet", label: "Rien ne se passe", summary: "aucune condition favorable pour la coulée" };
   }
 
   function dayOfSeason(dateString) {
@@ -285,6 +285,54 @@
       return;
     }
 
+    // Check if we're significantly past the typical season end window
+    const referenceDay = parseDate(days[0].date);
+    const referenceYear = referenceDay.getFullYear();
+    const currentIndex = dayOfSeason(days[0].date);
+
+    const historyEndIndices = history.map((season) => dayOfSeason(season.end));
+    const maxHistoricalIndex = Math.max(...historyEndIndices);
+    const avgHistoricalIndex = Math.round(average(historyEndIndices));
+
+    // If we're more than 14 days past the latest historical end date, season is likely over
+    if (currentIndex > maxHistoricalIndex + 14) {
+      const latestEndDate = history.reduce((latest, season) => {
+        const seasonDate = parseDate(season.end);
+        return seasonDate > latest ? seasonDate : latest;
+      }, new Date(0));
+
+      const latestLabel = formatLongDate(latestEndDate);
+      const avgLabel = formatMonthDay(seasonDateFromIndex(referenceYear - 1, avgHistoricalIndex));
+
+      seasonEndSummary.innerHTML = `
+        <h3>La saison est terminée</h3>
+        <p>Nous sommes le ${formatLongDate(referenceDay)}, bien après le ${formatLongDate(latestEndDate)}, la fin la plus tardive enregistrée. Les conditions ne soutiennent plus la coulée.</p>
+        <div class="detail-summary-grid">
+          <div class="detail-metric">
+            <strong>${formatMonthDay(latestEndDate)}</strong>
+            <span>fin la plus tardive</span>
+          </div>
+          <div class="detail-metric">
+            <strong>${avgLabel}</strong>
+            <span>moyenne historique</span>
+          </div>
+          <div class="detail-metric">
+            <strong>${history.length}</strong>
+            <span>saisons historiques</span>
+          </div>
+        </div>
+      `;
+
+      const notes = [
+        `L'historique montre que les saisons finissent généralement entre le ${formatMonthDay(seasonDateFromIndex(referenceYear - 1, Math.min(...historyEndIndices)))} et le ${latestLabel}.`,
+        `La saison 2026 ne montre pas les conditions de gel-dégel nécessaires pour continuer à couler.`,
+        `Pour actualiser les données de fin de saison 2026, mettez à jour la section données de production avec la date exacte.`
+      ];
+
+      seasonEndNotes.innerHTML = notes.map((note) => `<li>${note}</li>`).join("");
+      return;
+    }
+
     const historyWithWeights = history.map((season, index) => {
       const endIndex = dayOfSeason(season.end);
       const recencyWeight = 1 + index / history.length;
@@ -305,9 +353,6 @@
     const recentAverageIndex = Math.round(average(recentHistory.map((season) => season.endIndex)));
     const earliestIndex = Math.min(...historyWithWeights.map((season) => season.endIndex));
     const latestIndex = Math.max(...historyWithWeights.map((season) => season.endIndex));
-    const referenceDay = parseDate(days[0].date);
-    const referenceYear = referenceDay.getFullYear();
-    const currentIndex = dayOfSeason(days[0].date);
     const classicCycles = days.filter(isClassicCycle).length;
     const promisingDays = days.filter((day) => day.score >= 60).length;
     const quietDays = days.filter((day) => day.score < 40).length;

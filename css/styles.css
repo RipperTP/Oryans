@@ -412,18 +412,12 @@ body.is-gallery-open { overflow: hidden; }
 .footer-flag {
   display: inline-flex;
   align-items: center;
-  width: fit-content;
-  padding: 0.45rem 0.6rem;
-  background: rgba(15,46,20,0.5);
-  border: 1px solid var(--black-border2);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
 }
 
 .footer-flag img {
   display: block;
-  width: 88px;
-  height: auto;
+  height: 28px;
+  width: auto;
 }
 
 .footer-grid a {
@@ -689,9 +683,12 @@ body.is-gallery-open { overflow: hidden; }
 
 /* ── CONTACT PAGE ── */
 .contact-top-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; align-items: stretch; }
-.contact-buy-copy { display: flex; flex-direction: column; justify-content: center; max-width: 34rem; }
+.contact-buy-copy { display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0 auto; text-align: center; }
 .contact-buy-copy h1 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin: 0.5rem 0 1rem; }
-.contact-buy-copy .lead { color: var(--cream-dim); font-size: 0.96rem; }
+.contact-buy-copy .lead { color: var(--cream-dim); font-size: 0.96rem; max-width: 52ch; }
+.contact-buy-copy .eyebrow { justify-content: center; }
+.contact-buy-copy .eyebrow::before { display: none; }
+.contact-buy-copy .button-row { justify-content: center; }
 
 .brand-showcase {
   background: rgba(26,68,34,0.4); border: 1px solid rgba(62,138,70,0.2);
@@ -739,8 +736,17 @@ img { max-width: 100%; height: auto; }
   min-height: 100vh;
   position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
+}
+
+.page-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(6,9,7,0.55);
+  z-index: 1;
 }
 
 .page-section + .page-section {
@@ -766,11 +772,10 @@ img { max-width: 100%; height: auto; }
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: 5rem 0 5.5rem;
-  background: linear-gradient(to top, rgba(6,9,7,0.97) 0%, rgba(6,9,7,0.55) 45%, transparent 75%);
+  padding: 4rem 0;
 }
 
-.page-section-inner { max-width: 700px; }
+.page-section-inner { max-width: 700px; margin: 0 auto; text-align: center; }
 
 .page-section-title {
   font-size: clamp(2.6rem, 5.5vw, 5rem);
@@ -784,16 +789,25 @@ img { max-width: 100%; height: auto; }
   font-size: 1rem;
   color: var(--cream-dim);
   max-width: 46ch;
-  margin-bottom: 1.75rem;
+  margin: 0 auto 1.75rem;
   font-family: 'Lora', serif;
 }
+
+.page-section-inner .eyebrow { justify-content: center; }
+.page-section-inner .eyebrow::before { display: none; }
+.page-section-inner .button-row { justify-content: center; }
 
 #refreshForecast { margin-top: 1.5rem; }
 
 .flag-section {
-  padding: 3rem 0 2rem;
+  padding: 4rem 0 3rem;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(180deg,
+    var(--black) 0%,
+    rgba(15,46,20,0.35) 50%,
+    var(--black-surface) 100%
+  );
 }
 
 .flag-section-bg {
