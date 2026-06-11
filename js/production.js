@@ -79,7 +79,7 @@
               <span>Rythme moyen</span>
             </div>
           </div>
-          <p>Fenêtre approximative : saison en cours.</p>
+          <p>Fenêtre approximative : à confirmer.</p>
         `;
         return;
       }

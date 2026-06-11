@@ -246,11 +246,11 @@
       <p>À Embrun, ${label.day} ${label.short} obtient <strong>${day.score}/100</strong>.</p>
       <div class="detail-summary-grid">
         <div class="detail-metric">
-          <strong>${day.max.toFixed(1)} C</strong>
+          <strong>${day.max.toFixed(1)} °C</strong>
           <span>Maximum</span>
         </div>
         <div class="detail-metric">
-          <strong>${day.min.toFixed(1)} C</strong>
+          <strong>${day.min.toFixed(1)} °C</strong>
           <span>Minimum de nuit</span>
         </div>
         <div class="detail-metric">
@@ -458,7 +458,7 @@
           </div>
           <div class="day-card-bottom">
             <div>
-              <strong>${day.max.toFixed(1)} / ${day.min.toFixed(1)} C</strong>
+              <strong>${day.max.toFixed(1)} / ${day.min.toFixed(1)} °C</strong>
               <span class="weather-label">${weatherLabels[day.weatherCode] || "Prévision"}</span>
             </div>
             <div class="day-meta">${day.precip.toFixed(1)} mm</div>

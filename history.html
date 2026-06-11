@@ -2,6 +2,7 @@
 <html lang="fr-CA">
 <head>
   <meta charset="UTF-8">
+  <script>document.documentElement.classList.add("js");</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sucrerie o'Ryans | Histoire</title>
   <meta name="description" content="L'histoire réelle de la Sucrerie o'Ryans : terrain acheté en 1957, cabane bâtie en 1998, fabrication du sirop et contexte acéricole.">
@@ -14,6 +15,7 @@
 </head>
 <body class="page-history">
 
+  <a class="skip-link" href="#main">Aller au contenu</a>
   <div class="wood-bar"></div>
 
   <header class="site-header">
@@ -36,7 +38,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <!-- ═══════════ PAGE HERO ═══════════ -->
     <section class="page-hero">
       <div class="shell">
@@ -172,8 +174,8 @@
 
         <div class="card-grid two-up">
           <article class="media-link-card reveal">
-            <img src="assets/images/oryans-2016-thumb.jpg" alt="Vidéo 2016"
-              onerror="this.style.cssText='width:180px;background:var(--cream-warm);display:block;'">
+            <img src="assets/images/oryans-2016-thumb.jpg" alt="Vidéo 2016" loading="lazy" decoding="async"
+              onerror="this.style.cssText='width:180px;background:var(--black-raised);display:block;'">
             <div>
               <p class="card-kicker">YouTube</p>
               <h3>Sucrerie o'Ryans Sugar Shack 2016</h3>
@@ -183,8 +185,8 @@
           </article>
 
           <article class="media-link-card reveal">
-            <img src="assets/images/oryans-2017-thumb.jpg" alt="Vidéo 2017"
-              onerror="this.style.cssText='width:180px;background:var(--cream-warm);display:block;'">
+            <img src="assets/images/oryans-2017-thumb.jpg" alt="Vidéo 2017" loading="lazy" decoding="async"
+              onerror="this.style.cssText='width:180px;background:var(--black-raised);display:block;'">
             <div>
               <p class="card-kicker">YouTube</p>
               <h3>Saison des sucres 2017 &mdash; o'Ryans</h3>
@@ -202,6 +204,7 @@
       <div class="footer-brand">
         <strong>Sucrerie o'Ryans</strong>
         <p>Une saison des sucres bien de chez nous à Embrun, en Ontario.</p>
+        <p class="footer-copy">&copy; <span data-current-year>2026</span> Sucrerie o'Ryans</p>
       </div>
       <div>
         <a href="https://www.instagram.com/sucrerie_oryans_sugar_shack/?hl=en" target="_blank" rel="noreferrer">Instagram</a>

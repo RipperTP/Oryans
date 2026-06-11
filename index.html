@@ -2,6 +2,7 @@
 <html lang="fr-CA">
 <head>
   <meta charset="UTF-8">
+  <script>document.documentElement.classList.add("js");</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sucrerie o'Ryans | Cabane à sucre d'Embrun</title>
   <meta name="description" content="Le site de la Sucrerie o'Ryans à Embrun, en Ontario : histoire locale, prévision des coulées, archive de production et infos de contact.">
@@ -14,6 +15,7 @@
 </head>
 <body class="page-home">
 
+  <a class="skip-link" href="#main">Aller au contenu</a>
   <div class="wood-bar"></div>
 
   <header class="site-header">
@@ -36,6 +38,7 @@
     </div>
   </header>
 
+  <main id="main">
     <!-- ═══════════ HERO ═══════════ -->
     <section class="hero-home">
       <div class="hero-bg hero-bg--overall"></div>
@@ -51,7 +54,7 @@
         <ul class="fact-strip">
           <li>Sirop d'érable pur</li>
           <li>Embrun, Ontario</li>
-          <li>Saison 2026 en cours</li>
+          <li>Cabane bâtie en 1998</li>
         </ul>
       </div>
     </section>
@@ -104,22 +107,14 @@
         </div>
       </div>
     </section>
-
-  <!-- Lightbox -->
-  <div class="gallery-lightbox" data-gallery-lightbox hidden aria-hidden="true">
-    <button class="gallery-lightbox-close" type="button" data-gallery-close aria-label="Fermer la visionneuse">Fermer</button>
-    <button class="gallery-lightbox-nav is-prev" type="button" data-gallery-prev aria-label="Photo précédente">&#8592;</button>
-    <div class="gallery-lightbox-stage" data-gallery-stage>
-      <img data-gallery-active-image src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
-    </div>
-    <button class="gallery-lightbox-nav is-next" type="button" data-gallery-next aria-label="Photo suivante">&#8594;</button>
-  </div>
+  </main>
 
   <footer class="site-footer">
     <div class="shell footer-grid">
       <div class="footer-brand">
         <strong>Sucrerie o'Ryans</strong>
         <p>Une saison des sucres bien de chez nous à Embrun, en Ontario.</p>
+        <p class="footer-copy">&copy; <span data-current-year>2026</span> Sucrerie o'Ryans</p>
       </div>
       <div>
         <a href="https://www.instagram.com/sucrerie_oryans_sugar_shack/?hl=en" target="_blank" rel="noreferrer">Instagram</a>

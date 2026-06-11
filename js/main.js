@@ -17,7 +17,12 @@
       menuToggle.setAttribute("aria-expanded", String(isOpen));
       menuToggle.setAttribute("aria-label", isOpen ? "Fermer le menu principal" : "Ouvrir le menu principal");
       siteNav.classList.toggle("is-open", isOpen);
-      siteNav.setAttribute("aria-hidden", String(!isOpen));
+      // The nav is only hidden when collapsed on mobile; on desktop it is always visible.
+      if (mobileMenuQuery.matches) {
+        siteNav.setAttribute("aria-hidden", String(!isOpen));
+      } else {
+        siteNav.removeAttribute("aria-hidden");
+      }
       document.body.classList.toggle("is-menu-open", isOpen && mobileMenuQuery.matches);
     }
 

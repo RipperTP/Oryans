@@ -17,7 +17,7 @@ window.oryansData = {
     { year: 2023, liters: 485, days: 49, start: "2023-02-23", end: "2023-04-12", note: "Plus longue saison visible sur l'affiche." },
     { year: 2024, liters: 437, days: 39, start: "2024-02-21", end: "2024-03-30", note: "Encore une longue saison avec un total modéré." },
     { year: 2025, liters: 635, days: 32, start: "2025-03-11", end: "2025-04-11", note: "Saison récente avec un bon rendement et une durée nette." },
-    { year: 2026, liters: null, days: null, start: null, end: null, statusLabel: "En cours...", note: "" }
+    { year: 2026, liters: null, days: null, start: null, end: null, statusLabel: "Données à venir", note: "Les totaux de la saison 2026 ne sont pas encore compilés." }
   ],
   researchSources: [
     {

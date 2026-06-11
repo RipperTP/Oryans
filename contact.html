@@ -2,6 +2,7 @@
 <html lang="fr-CA">
 <head>
   <meta charset="UTF-8">
+  <script>document.documentElement.classList.add("js");</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sucrerie o'Ryans | Contact</title>
   <meta name="description" content="Contact et point de vente local pour la Sucrerie o'Ryans.">
@@ -14,6 +15,7 @@
 </head>
 <body class="page-contact">
 
+  <a class="skip-link" href="#main">Aller au contenu</a>
   <div class="wood-bar"></div>
 
   <header class="site-header">
@@ -36,7 +38,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <!-- ═══════════ PAGE HERO ═══════════ -->
     <section class="page-hero">
       <div class="shell page-hero-grid contact-top-grid">
@@ -104,6 +106,7 @@
       <div class="footer-brand">
         <strong>Sucrerie o'Ryans</strong>
         <p>Une saison des sucres bien de chez nous à Embrun, en Ontario.</p>
+        <p class="footer-copy">&copy; <span data-current-year>2026</span> Sucrerie o'Ryans</p>
       </div>
       <div>
         <a href="https://www.instagram.com/sucrerie_oryans_sugar_shack/?hl=en" target="_blank" rel="noreferrer">Instagram</a>
@@ -150,6 +153,8 @@
 
       var img = document.createElement("img");
       img.alt = tile.label;
+      img.loading = "lazy";
+      img.decoding = "async";
       img.src = tile.src;
       img.style.height = heights[tile.aspect] || "240px";
 
